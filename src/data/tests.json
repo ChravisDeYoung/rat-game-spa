@@ -1,0 +1,1434 @@
+[
+  {
+    "items": ["cottage", "swiss", "cake"],
+    "solution": "cheese",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["cream", "skate", "water"],
+    "solution": "ice",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["loser", "throat", "spot"],
+    "solution": "sore",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["show", "life", "row"],
+    "solution": "boat",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["night", "wrist", "stop"],
+    "solution": "watch",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["duck", "fold", "dollar"],
+    "solution": "bill",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["rocking", "wheel", "high"],
+    "solution": "chair",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["dew", "comb", "bee"],
+    "solution": "honey",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["fountain", "baking", "pop"],
+    "solution": "soda",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["preserve", "ranger", "tropical"],
+    "solution": "forest",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["aid", "rubber", "wagon"],
+    "solution": "band",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["flake", "mobile", "cone"],
+    "solution": "snow",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["cracker", "fly", "fighter"],
+    "solution": "fire",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["safety", "cushion", "point"],
+    "solution": "pin",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["cane", "daddy", "plum"],
+    "solution": "sugar",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["dream", "break", "light"],
+    "solution": "day",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["fish", "mine", "rush"],
+    "solution": "gold",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["political", "surprise", "line"],
+    "solution": "party",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["measure", "worm", "video"],
+    "solution": "tape",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["high", "district", "house"],
+    "solution": "school/court",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["sense", "courtesy", "place"],
+    "solution": "common",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["worm", "shelf", "end"],
+    "solution": "book",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["piece", "mind", "dating"],
+    "solution": "game",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["flower", "friend", "scout"],
+    "solution": "girl",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["river", "note", "account"],
+    "solution": "bank",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["print", "berry", "bird"],
+    "solution": "blue",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["pie", "luck", "belly"],
+    "solution": "pot",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["date", "alley", "fold"],
+    "solution": "blind",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["opera", "hand", "dish"],
+    "solution": "soap",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["cadet", "capsule", "ship"],
+    "solution": "space",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["fur", "rack", "tail"],
+    "solution": "coat",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["stick", "maker", "point"],
+    "solution": "match",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["hound", "pressure", "shot"],
+    "solution": "blood",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["fox", "man", "peep"],
+    "solution": "hole",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["sleeping", "bean", "trash"],
+    "solution": "bag",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["dust", "cereal", "fish"],
+    "solution": "bowl",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["light", "birthday", "stick"],
+    "solution": "candle",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["food", "forward", "break"],
+    "solution": "fast",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["shine", "beam", "struck"],
+    "solution": "moon",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["peach", "arm", "tar"],
+    "solution": "pit",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["water", "mine", "shaker"],
+    "solution": "salt",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["palm", "shoe", "house"],
+    "solution": "tree",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["basket", "eight", "snow"],
+    "solution": "ball",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["wheel", "hand", "shopping"],
+    "solution": "cart",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["right", "cat", "carbon"],
+    "solution": "copy",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["home", "sea", "bed"],
+    "solution": "sick",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["nuclear", "feud", "album"],
+    "solution": "family",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["sandwich", "house", "golf"],
+    "solution": "club",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["cross", "rain", "tie"],
+    "solution": "bow",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["sage", "paint", "hair"],
+    "solution": "brush",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["french", "car", "shoe"],
+    "solution": "horn",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["boot", "summer", "ground"],
+    "solution": "camp",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["chamber", "mask", "natural"],
+    "solution": "gas",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["mill", "tooth", "dust"],
+    "solution": "saw",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["main", "sweeper", "light"],
+    "solution": "street",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["pike", "coat", "signal"],
+    "solution": "turn",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["office", "mail", "hat"],
+    "solution": "box",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["fly", "clip", "wall"],
+    "solution": "paper",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["age", "mile", "sand"],
+    "solution": "stone",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["catcher", "food", "hot"],
+    "solution": "dog",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["wagon", "break", "radio"],
+    "solution": "station",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["tank", "hill", "secret"],
+    "solution": "top",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["health", "taker", "less"],
+    "solution": "care",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["lift", "card", "mask"],
+    "solution": "face",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["dress", "dial", "flower"],
+    "solution": "sun",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["force", "line", "mail"],
+    "solution": "air",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["guy", "rain", "down"],
+    "solution": "fall",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["eight", "skate", "stick"],
+    "solution": "figure",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["down", "question", "check"],
+    "solution": "mark",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["animal", "back", "rat"],
+    "solution": "pack",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["officer", "cash", "larceny"],
+    "solution": "petty",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["pine", "crab", "sauce"],
+    "solution": "apple",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["house", "thumb", "pepper"],
+    "solution": "green",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["carpet", "alert", "ink"],
+    "solution": "red",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["master", "toss", "finger"],
+    "solution": "ring",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["hammer", "gear", "hunter"],
+    "solution": "head",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["knife", "light", "pal"],
+    "solution": "pen",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["foul", "ground", "mate"],
+    "solution": "play",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["change", "circuit", "cake"],
+    "solution": "short",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["way", "board", "sleep"],
+    "solution": "walk",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["blank", "list", "mate"],
+    "solution": "check",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["tail", "water", "flood"],
+    "solution": "gate",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["marshal", "child", "piano"],
+    "solution": "grand",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["cover", "arm", "wear"],
+    "solution": "under",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["rain", "test", "stomach"],
+    "solution": "acid",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["time", "blown", "nelson"],
+    "solution": "full",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["pile", "market", "room"],
+    "solution": "stock",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["mouse", "bear", "sand"],
+    "solution": "trap",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["cat", "number", "phone"],
+    "solution": "call",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["keg", "puff", "room"],
+    "solution": "powder",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["trip", "house", "goal"],
+    "solution": "field",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["fork", "dark", "man"],
+    "solution": "pitch",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["fence", "card", "master"],
+    "solution": "post",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["test", "runner", "map"],
+    "solution": "road",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["dive", "light", "rocket"],
+    "solution": "sky",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["man", "glue", "star"],
+    "solution": "super",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["tooth", "potato", "heart"],
+    "solution": "sweet",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["illness", "bus", "computer"],
+    "solution": "terminal",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["type", "ghost", "screen"],
+    "solution": "writer",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["mail", "board", "lung"],
+    "solution": "black",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["teeth", "arrest", "start"],
+    "solution": "false",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["iron", "shovel", "engine"],
+    "solution": "steam",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["wet", "law", "business"],
+    "solution": "suit",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["rope", "truck", "line"],
+    "solution": "tow",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["off", "military", "first"],
+    "solution": "base",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["spoon", "cloth", "card"],
+    "solution": "table",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["cut", "cream", "war"],
+    "solution": "cold",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["note", "chain", "master"],
+    "solution": "key",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["shock", "shave", "taste"],
+    "solution": "after",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["wise", "work", "tower"],
+    "solution": "clock",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["grass", "king", "meat"],
+    "solution": "crab",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["baby", "spring", "cap"],
+    "solution": "shower",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["break", "bean", "cake"],
+    "solution": "coffee",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["cry", "front", "ship"],
+    "solution": "battle",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["hold", "print", "stool"],
+    "solution": "foot",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["roll", "bean", "fish"],
+    "solution": "jelly",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["horse", "human", "drag"],
+    "solution": "race",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["oil", "bar", "tuna"],
+    "solution": "salad",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["bottom", "curve", "hop"],
+    "solution": "bell",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["tomato", "bomb", "picker"],
+    "solution": "cherry",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["pea", "shell", "chest"],
+    "solution": "nut",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["line", "fruit", "drunk"],
+    "solution": "punch",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["bump", "egg", "step"],
+    "solution": "goose",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["fight", "control", "machine"],
+    "solution": "gun",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["home", "arm", "room"],
+    "solution": "rest",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["child", "scan", "wash"],
+    "solution": "brain",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["nose", "stone", "bear"],
+    "solution": "brown",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["end", "line", "lock"],
+    "solution": "dead",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["control", "place", "rate"],
+    "solution": "birth",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["lounge", "hour", "napkin"],
+    "solution": "cocktail",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["artist", "hatch", "route"],
+    "solution": "escape",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["pet", "bottom", "garden"],
+    "solution": "rock",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["mate", "shoes", "total"],
+    "solution": "running",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["self", "attorney", "spending"],
+    "solution": "defense",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["board", "blade", "back"],
+    "solution": "switch",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["land", "hand", "house"],
+    "solution": "farm",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["hungry", "order", "belt"],
+    "solution": "money",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["forward", "flush", "razor"],
+    "solution": "straight",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["shadow", "chart", "drop"],
+    "solution": "eye",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["way", "ground", "weather"],
+    "solution": "fair",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["cast", "side", "jump"],
+    "solution": "broad",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["back", "step", "screen"],
+    "solution": "door",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["reading", "service", "stick"],
+    "solution": "lip",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["over", "plant", "horse"],
+    "solution": "power",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["falling", "actor", "dust"],
+    "solution": "star",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["broken", "clear", "eye"],
+    "solution": "glass",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["skunk", "kings", "boiled"],
+    "solution": "cabbage",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["widow", "bite", "monkey"],
+    "solution": "spider",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["bass", "complex", "sleep"],
+    "solution": "deep",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["coin", "quick", "spoon"],
+    "solution": "silver",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["gold", "stool", "tender"],
+    "solution": "bar",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["time", "hair", "stretch"],
+    "solution": "long",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["cracker", "union", "rabbit"],
+    "solution": "jack",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["bald", "screech", "emblem"],
+    "solution": "eagle",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["blood", "music", "cheese"],
+    "solution": "blue",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["manners", "round", "tennis"],
+    "solution": "table",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["off", "trumpet", "atomic"],
+    "solution": "blast",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["playing", "credit", "report"],
+    "solution": "card",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["rabbit", "cloud", "house"],
+    "solution": "white",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["room", "blood", "salts"],
+    "solution": "bath",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["salt", "deep", "foam"],
+    "solution": "sea",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["square", "cardboard", "open"],
+    "solution": "box",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["water", "tobacco", "stove"],
+    "solution": "pipe",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["ache", "hunter", "cabbage"],
+    "solution": "head",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["chamber", "staff", "box"],
+    "solution": "music",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["high", "book", "sour"],
+    "solution": "note",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["lick", "sprinkle", "mines"],
+    "solution": "salt",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["pure", "blue", "fall"],
+    "solution": "water",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["snack", "line", "birthday"],
+    "solution": "party",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["square", "telephone", "club"],
+    "solution": "book",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["surprise", "wrap", "care"],
+    "solution": "gift",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["ticket", "shop", "broker"],
+    "solution": "pawn",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["barrel", "root", "belly"],
+    "solution": "beer",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["blade", "witted", "weary"],
+    "solution": "dull",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["cherry", "time", "smell"],
+    "solution": "blossom",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["notch", "flight", "spin"],
+    "solution": "top",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["strap", "pocket", "time"],
+    "solution": "watch",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["walker", "main", "sweeper"],
+    "solution": "street",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["wicked", "bustle", "slicker"],
+    "solution": "city",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["chocolate", "fortune", "tin"],
+    "solution": "cookie",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["color", "numbers", "oil"],
+    "solution": "paint",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["mouse", "sharp", "blue"],
+    "solution": "cheese",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["sandwich", "golf", "foot"],
+    "solution": "club",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["silk", "cream", "even"],
+    "solution": "smooth",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["speak", "money", "street"],
+    "solution": "easy",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["big", "leaf", "shade"],
+    "solution": "tree",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["envy", "golf", "beans"],
+    "solution": "green",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["hall", "car", "swimming"],
+    "solution": "pool",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["ink", "herring", "neck"],
+    "solution": "red",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["measure", "desk", "scotch"],
+    "solution": "tape",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["strike", "same", "tennis"],
+    "solution": "match",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["athletes", "web", "rabbit"],
+    "solution": "foot",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["board", "magic", "death"],
+    "solution": "black",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["lapse", "vivid", "elephant"],
+    "solution": "memory",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["puss", "tart", "spoiled"],
+    "solution": "sour",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["rock", "times", "steel"],
+    "solution": "hard",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["stop", "petty", "sneak"],
+    "solution": "thief",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["thread", "pine", "pain"],
+    "solution": "needle",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["zone", "still", "noise"],
+    "solution": "quiet",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["cloth", "sad", "out"],
+    "solution": "sack",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["cotton", "bathtub", "tonic"],
+    "solution": "gin",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["foot", "collection", "out"],
+    "solution": "stamp",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["inch", "deal", "peg"],
+    "solution": "square",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["jump", "kill", "bliss"],
+    "solution": "joy",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["magic", "plush", "floor"],
+    "solution": "carpet",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["note", "dive", "chair"],
+    "solution": "high",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["stalk", "trainer", "king"],
+    "solution": "lion",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["bump", "throat", "sum"],
+    "solution": "lump",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["shopping", "washer", "picture"],
+    "solution": "window",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["blank", "white", "lines"],
+    "solution": "paper",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["stick", "light", "birthday"],
+    "solution": "candle",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["sore", "shoulder", "sweat"],
+    "solution": "cold",
+    "difficulty": "Very Hard"
+  },
+  { "items": ["call", "pay", "line"], "solution": "phone", "difficulty": "" },
+  { "items": ["end", "burning", "blue"], "solution": "book", "difficulty": "" },
+  { "items": ["man", "hot", "sure"], "solution": "fire", "difficulty": "" },
+  { "items": ["stick", "pal", "ball"], "solution": "pin", "difficulty": "" },
+  {
+    "items": ["blue", "cake", "cottage"],
+    "solution": "cheese",
+    "difficulty": ""
+  },
+  { "items": ["man", "wheel", "high"], "solution": "chair", "difficulty": "" },
+  { "items": ["motion", "poke", "down"], "solution": "slow", "difficulty": "" },
+  {
+    "items": ["line", "birthday", "surprise"],
+    "solution": "party",
+    "difficulty": ""
+  },
+  { "items": ["wood", "liquor", "luck"], "solution": "hard", "difficulty": "" },
+  {
+    "items": ["house", "village", "golf"],
+    "solution": "green",
+    "difficulty": ""
+  },
+  {
+    "items": ["plan", "show", "walker"],
+    "solution": "floor",
+    "difficulty": ""
+  },
+  {
+    "items": ["key", "wall", "previous"],
+    "solution": "stone",
+    "difficulty": ""
+  },
+  { "items": ["bell", "iron", "tender"], "solution": "bar", "difficulty": "" },
+  {
+    "items": ["water", "youth", "soda"],
+    "solution": "fountain",
+    "difficulty": ""
+  },
+  { "items": ["base", "snow", "dance"], "solution": "ball", "difficulty": "" },
+  { "items": ["stop", "kart", "slow"], "solution": "go", "difficulty": "" },
+  { "items": ["up", "book", "charge"], "solution": "cover", "difficulty": "" },
+  { "items": ["tin", "writer", "my"], "solution": "type", "difficulty": "" },
+  { "items": ["leg", "arm", "person"], "solution": "chair", "difficulty": "" },
+  {
+    "items": ["weight", "out", "pencil"],
+    "solution": "lead",
+    "difficulty": ""
+  },
+  { "items": ["spin", "tip", "shape"], "solution": "top", "difficulty": "" },
+  { "items": ["sharp", "tick", "tie"], "solution": "tack", "difficulty": "" },
+  { "items": ["out", "band", "night"], "solution": "watch", "difficulty": "" },
+  { "items": ["cool", "house", "fat"], "solution": "cat", "difficulty": "" },
+  { "items": ["back", "go", "light"], "solution": "stop", "difficulty": "" },
+  { "items": ["man", "order", "air"], "solution": "mail", "difficulty": "" },
+  { "items": ["bath", "up", "burst"], "solution": "bubble", "difficulty": "" },
+  { "items": ["ball", "out", "blue"], "solution": "black", "difficulty": "" },
+  { "items": ["up", "around", "rear"], "solution": "end", "difficulty": "" },
+  {
+    "items": ["house", "blanket", "ball"],
+    "solution": "beach",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["trap", "polar", "claw"],
+    "solution": "bear",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["cinder", "building", "buster"],
+    "solution": "block",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["line", "patrol", "town"],
+    "solution": "border",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["thorn", "whack", "rose"],
+    "solution": "bush",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["garbage", "beer", "paint"],
+    "solution": "can",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["scan", "nap", "burglar"],
+    "solution": "cat",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["trap", "back", "screen"],
+    "solution": "door",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["through", "disk", "way"],
+    "solution": "drive",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["tax", "real", "fourth"],
+    "solution": "estate",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["life", "color", "coast"],
+    "solution": "guard",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["wave", "lamp", "dry"],
+    "solution": "heat",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["glass", "rush", "happy"],
+    "solution": "hour",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["waffle", "lung", "tire"],
+    "solution": "iron",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["poison", "league", "creeping"],
+    "solution": "ivy",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["pain", "serial", "whale"],
+    "solution": "killer",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["floor", "shade", "heat"],
+    "solution": "lamp",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["puppy", "TRUE", "letter"],
+    "solution": "love",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["bedroom", "plan", "brew"],
+    "solution": "master",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["mouth", "bike", "oil"],
+    "solution": "motor",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["polish", "finger", "down"],
+    "solution": "nail",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["sake", "pet", "nick"],
+    "solution": "name",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["computer", "cable", "broadcast"],
+    "solution": "network",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["skirts", "take", "put"],
+    "solution": "out",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["jury", "door", "side"],
+    "solution": "panel",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["due", "life", "tense"],
+    "solution": "past",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["tomato", "cement", "tooth"],
+    "solution": "paste",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["flag", "vault", "fishing"],
+    "solution": "pole",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["release", "french", "secretary"],
+    "solution": "press",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["dollar", "stop", "language"],
+    "solution": "sign",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["quick", "spoon", "screen"],
+    "solution": "silver",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["grand", "door", "bang"],
+    "solution": "slam",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["dash", "happy", "stick"],
+    "solution": "slap",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["ruby", "glass", "bunny"],
+    "solution": "slipper",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["demon", "limit", "way"],
+    "solution": "speed",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["gap", "door", "sign"],
+    "solution": "stop",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["food", "front", "drug"],
+    "solution": "store",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["set", "program", "cable"],
+    "solution": "television",
+    "difficulty": "Very Easy"
+  },
+  {
+    "items": ["chest", "car", "store"],
+    "solution": "toy",
+    "difficulty": "Very Hard"
+  },
+  {
+    "items": ["property", "moral", "price"],
+    "solution": "value",
+    "difficulty": "Hard"
+  },
+  { "items": ["rag", "milk", "out"], "solution": "weed", "difficulty": "Hard" },
+  {
+    "items": ["noise", "collar", "wash"],
+    "solution": "white",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["bay", "picture", "washer"],
+    "solution": "window",
+    "difficulty": "Medium"
+  },
+  {
+    "items": ["hard", "drift", "cutter"],
+    "solution": "wood",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["cottage", "brick", "cake"],
+    "solution": "cheese",
+    "difficulty": "Very Easy"
+  },
+  { "items": ["stick", "hair", "ball"], "solution": "pin", "difficulty": "" },
+  {
+    "items": ["stool", "powder", "ball"],
+    "solution": "foot",
+    "difficulty": ""
+  },
+  {
+    "items": ["key", "wall", "precious"],
+    "solution": "stone",
+    "difficulty": ""
+  },
+  {
+    "items": ["water", "pen", "soda"],
+    "solution": "fountain",
+    "difficulty": ""
+  },
+  { "items": ["steady", "cart", "slow"], "solution": "go", "difficulty": "" },
+  { "items": ["tin", "write", "my"], "solution": "type", "difficulty": "" },
+  {
+    "items": ["weight", "pipe", "pencil"],
+    "solution": "lead",
+    "difficulty": ""
+  },
+  { "items": ["sharp", "thumb", "tie"], "solution": "tack", "difficulty": "" },
+  { "items": ["back", "short", "light"], "solution": "stop", "difficulty": "" },
+  { "items": ["bath", "up", "gum"], "solution": "bubble", "difficulty": "" },
+  { "items": ["ball", "out", "jack"], "solution": "black", "difficulty": "" },
+  { "items": ["up", "deep", "rear"], "solution": "end", "difficulty": "" },
+  {
+    "items": ["shelf", "read", "end"],
+    "solution": "book",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["sea", "home", "stomach"],
+    "solution": "sick",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["car", "swimming", "cue"],
+    "solution": "pool",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["cookies", "sixteen", "heart"],
+    "solution": "sweet",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["lounge", "hour", "drink"],
+    "solution": "cocktail",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["keel", "show", "row"],
+    "solution": "boat",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["desert", "ice", "spell"],
+    "solution": "dry",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["base", "show", "dance"],
+    "solution": "ball",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["soap", "shoe", "tissue"],
+    "solution": "box",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["hot", "butterflies", "pump"],
+    "solution": "stomach",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["head", "street", "dark"],
+    "solution": "light",
+    "difficulty": "Easy"
+  },
+  {
+    "items": ["room", "saturday", "salts"],
+    "solution": "bath",
+    "difficulty": "Hard"
+  },
+  {
+    "items": ["surprise", "line", "birthday"],
+    "solution": "party",
+    "difficulty": "Easy"
+  },
+  { "items": ["red", "go", "car"], "solution": "stop", "difficulty": "Easy" }
+]

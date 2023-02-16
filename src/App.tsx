@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+
+import jsonData from "./data/tests.json";
+
+type RAT = {
+  items: Array<string>;
+  solution: string;
+  difficulty: string;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [test, setTest] = useState<RAT>(
+    jsonData[Math.floor(Math.random() * jsonData.length)]
+  );
+  const [answer, setAnswer] = useState<string>("");
+
+  const checkAnswer = () => {
+    if (answer.trim() === test.solution) {
+      alert("winner!");
+      setTest(jsonData[Math.floor(Math.random() * jsonData.length)]);
+    } else {
+      alert("oops, try again...");
+    }
+
+    setAnswer("");
+  };
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>Remote Association Test</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        {test.items.map((x, i) => (
+          <p key={i}>{x}</p>
+        ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="card">
+        <input
+          type="text"
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+        ></input>
+        <button onClick={checkAnswer}>Check</button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
