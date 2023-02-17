@@ -9,6 +9,14 @@ type RAT = {
   difficulty: string;
 };
 
+const difficultyMapping: { [difficulty: string]: string } = {
+  "Very Easy": "#97ff82",
+  Easy: "#1ba300",
+  Medium: "#ffd52b",
+  Hard: "#ff4d4d",
+  "Very Hard": "#690000",
+};
+
 function App() {
   const tests = useRef<Array<RAT>>(jsonData);
   const [testIndex, setTestIndex] = useState(
@@ -33,6 +41,10 @@ function App() {
       <h1>Remote Association Test</h1>
       <div
         className="card"
+        style={{
+          backgroundColor:
+            difficultyMapping[tests.current[testIndex].difficulty],
+        }}
       >
         {tests.current[testIndex].items.map((x, i) => (
           <p key={i}>{x}</p>
