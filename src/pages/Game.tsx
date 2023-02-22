@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import jsonData from "../data/tests.json";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type RAT = {
   items: Array<string>;
@@ -22,20 +24,31 @@ function GamePage() {
     Math.floor(Math.random() * tests.current.length)
   );
   const [answer, setAnswer] = useState<string>("");
-  const [winCount, setWinCount] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
   const [gameClock, setGameClock] = useState<number>(30);
+  const [highscore, setHighscore] = useLocalStorage("highscore", 0);
 
   const checkAnswer = () => {
-    if (answer.trim() === tests.current[testIndex].solution) {
-      alert("winner!");
+    if (answer.toLowerCase().trim() === tests.current[testIndex].solution) {
       tests.current.splice(testIndex, 1);
       setTestIndex(Math.floor(Math.random() * tests.current.length));
-      setWinCount((prev) => prev + 1);
+      setScore((prev) => prev + 1);
     } else {
-      alert("oops, try again...");
+      // TODO: something when you're wrong
     }
 
     setAnswer("");
+  };
+
+  const skipTest = () => {
+    if (tests.current.length > 1) {
+      let randomIndex = Math.floor(Math.random() * tests.current.length);
+      while (randomIndex === testIndex) {
+        randomIndex = Math.floor(Math.random() * tests.current.length);
+      }
+
+      setTestIndex(randomIndex);
+    }
   };
 
   useEffect(() => {
@@ -43,14 +56,16 @@ function GamePage() {
       setTimeout(() => {
         setGameClock((prev) => prev - 1);
       }, 1000);
+    } else if (score > highscore) {
+      setHighscore(score);
     }
   }, [gameClock]);
 
-  return (
+  return gameClock > 0 ? (
     <div className="card">
       <h2>Time Left: {gameClock}</h2>
       <div className="card">
-        <h3>{winCount}</h3>
+        <h3>{score}</h3>
         {tests.current[testIndex].items.map((x, i) => (
           <p
             key={i}
@@ -73,14 +88,16 @@ function GamePage() {
       </div>
 
       <div className="card">
-        <button
-          onClick={() =>
-            setTestIndex(Math.floor(Math.random() * tests.current.length))
-          }
-        >
+        <button disabled={tests.current.length < 1} onClick={skipTest}>
           Skip
         </button>
       </div>
+    </div>
+  ) : (
+    <div className="card">
+      <h2>Game Over</h2>
+      <h3>Score: {score}</h3>
+      <Link to="/">Return to Home</Link>
     </div>
   );
 }
