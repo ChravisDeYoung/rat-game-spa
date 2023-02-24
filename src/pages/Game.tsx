@@ -132,10 +132,16 @@ function GamePage() {
       </div>
 
       <div className="flex flex-col items-center">
-        <Link className="bg-gray-300 font-medium py-2 w-1/2 my-2" to="/game">
+        <Link
+          className="bg-gray-300 font-medium py-2 w-1/2 my-2 text-xl"
+          to="/game"
+        >
           play again
         </Link>
-        <Link className="bg-gray-300 font-medium py-2 w-1/2 my-2" to="/">
+        <Link
+          className="bg-gray-300 font-medium py-2 w-1/2 my-2 text-xl"
+          to="/"
+        >
           home
         </Link>
       </div>
