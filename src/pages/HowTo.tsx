@@ -26,20 +26,20 @@ function HowToPage() {
 
       <div className="flex flex-col items-center">
         <div>
-          <div className="bg-gray-300 rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[30%]"></div>
-          <div className="bg-gray-300 rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[30%]"></div>
+          <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[30%]"></div>
+          <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[30%]"></div>
         </div>
-        <p className="bg-gray-300 font-medium py-2 w-1/2 my-[0.1rem] text-xl">
+        <p className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl">
           cream
         </p>
-        <p className="bg-gray-300 font-medium py-2 w-1/2 my-[0.1rem] text-xl">
+        <p className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl">
           skate
         </p>
-        <p className="bg-gray-300 font-medium py-2 w-1/2 my-[0.1rem] text-xl">
+        <p className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl">
           water
         </p>
 
-        <p className="bg-gray-300 text-green-600 font-medium py-2 w-1/2 my-5 text-xl border-green-600 border-2">
+        <p className="bg-gray text-green-600 font-medium py-2 w-1/2 my-5 text-xl border-green-600 border-2">
           ice
         </p>
       </div>

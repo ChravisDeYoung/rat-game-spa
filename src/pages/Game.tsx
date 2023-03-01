@@ -89,8 +89,8 @@ function GamePage() {
 
         <div className="flex flex-col items-center">
           <div>
-            <div className="bg-gray-300 rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[30%]"></div>
-            <div className="bg-gray-300 rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[30%]"></div>
+            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[30%]"></div>
+            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[30%]"></div>
           </div>
           {tests.current[testIndex].items.map((x, i) => (
             <p
@@ -98,7 +98,7 @@ function GamePage() {
               // style={{
               //   color: difficultyMapping[tests.current[testIndex].difficulty],
               // }}
-              className="bg-gray-300 font-medium py-2 w-1/2 my-[0.1rem] text-xl"
+              className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl"
             >
               {x}
             </p>
@@ -106,7 +106,7 @@ function GamePage() {
         </div>
 
         <input
-          className="bg-gray-300 font-medium py-2 w-1/2 my-5 text-center focus:outline-black text-xl"
+          className="bg-gray font-medium py-2 w-1/2 my-5 text-center focus:outline-black text-xl"
           type="text"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
@@ -133,15 +133,12 @@ function GamePage() {
 
       <div className="flex flex-col items-center">
         <Link
-          className="bg-gray-300 font-medium py-2 w-1/2 my-2 text-xl"
+          className="bg-gray font-medium py-2 w-1/2 my-2 text-xl"
           to="/game"
         >
           play again
         </Link>
-        <Link
-          className="bg-gray-300 font-medium py-2 w-1/2 my-2 text-xl"
-          to="/"
-        >
+        <Link className="bg-gray font-medium py-2 w-1/2 my-2 text-xl" to="/">
           home
         </Link>
       </div>

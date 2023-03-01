@@ -21,13 +21,13 @@ function HomePage() {
       </div>
       <div className="flex flex-col items-center">
         <Link
-          className="bg-gray-300 font-medium py-2 w-1/2 my-2 text-xl"
+          className="bg-gray font-medium py-2 w-1/2 my-2 text-xl"
           to="/game"
         >
           play
         </Link>
         <Link
-          className="bg-gray-300 font-medium py-2 w-1/2 my-2 text-xl"
+          className="bg-gray font-medium py-2 w-1/2 my-2 text-xl"
           to="/settings"
         >
           settings
