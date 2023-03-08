@@ -12,11 +12,11 @@ type RAT = {
 };
 
 const difficultyMapping: { [difficulty: string]: string } = {
-  "Very Easy": "#97ff82",
-  Easy: "#1ba300",
-  Medium: "#ffd52b",
-  Hard: "#ff4d4d",
-  "Very Hard": "#690000",
+  "Very Easy": "#8FD437",
+  Easy: "#529200",
+  Medium: "#D4A446",
+  Hard: "#C7654F",
+  "Very Hard": "#833E2F",
 };
 
 function GamePage() {
@@ -74,12 +74,12 @@ function GamePage() {
         <h3 className="font-semibold text-3xl mt-5">{score}</h3>
 
         <div
-          className="bg-yellow-600 rounded-full h-20 w-20 mx-auto my-10"
+          className="rounded-full h-20 w-20 mx-auto my-10"
           style={{
             backgroundImage:
-              "conic-gradient(rgb(253 224 71)" +
+              "conic-gradient(rgb(255 222 104)" + // yellow
               (100 - Math.round((gameClock / 30) * 100)) +
-              "%, rgb(202 138 4) " +
+              "%, rgb(202 172 66) " + // yellow-dark
               (100 - Math.round((gameClock / 30) * 100)) +
               "%)",
           }}
@@ -89,15 +89,28 @@ function GamePage() {
 
         <div className="flex flex-col items-center">
           <div>
-            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[30%]"></div>
-            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[30%]"></div>
+            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[40%]">
+              <div
+                style={{
+                  backgroundColor:
+                    difficultyMapping[tests.current[testIndex].difficulty],
+                }}
+                className="h-10 w-10 relative top-[30%] left-1/4 rounded-tl-full rounded-tr-full rounded-bl-full"
+              ></div>
+            </div>
+            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[40%]">
+              <div
+                style={{
+                  backgroundColor:
+                    difficultyMapping[tests.current[testIndex].difficulty],
+                }}
+                className="bg-very-easy h-10 w-10 relative top-[30%] left-1/4 rounded-tl-full rounded-tr-full rounded-br-full"
+              ></div>
+            </div>
           </div>
           {tests.current[testIndex].items.map((x, i) => (
             <p
               key={i}
-              // style={{
-              //   color: difficultyMapping[tests.current[testIndex].difficulty],
-              // }}
               className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl"
             >
               {x}
@@ -105,18 +118,25 @@ function GamePage() {
           ))}
         </div>
 
-        <input
-          className="bg-gray font-medium py-2 w-1/2 my-5 text-center focus:outline-black text-xl"
-          type="text"
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-          onKeyDown={inputKeyDown}
-        ></input>
-      </div>
-      <div>
-        <button disabled={tests.current.length < 1} onClick={skipTest}>
-          Skip
-        </button>
+        <div className="flex flex-col items-center">
+          <input
+            autoFocus
+            className="bg-gray font-medium py-2 w-1/2 mt-5 text-center focus:outline-black text-xl"
+            type="text"
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            onKeyDown={inputKeyDown}
+          ></input>
+          <div className="mt-3 w-full">
+            <button
+              disabled={tests.current.length < 1}
+              onClick={skipTest}
+              className="bg-pink font-medium py-1 w-1/2 text-center text-sm"
+            >
+              Skip
+            </button>
+          </div>
+        </div>
       </div>
     </>
   ) : (
