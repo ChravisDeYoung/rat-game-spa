@@ -6,11 +6,9 @@ import GamePage from "./pages/Game";
 import HowToPage from "./pages/HowTo";
 import SettingsPage from "./pages/Settings";
 
-import "./App.css";
-
 function App() {
   return (
-    <div>
+    <div className="bg-cheese">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

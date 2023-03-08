@@ -7,6 +7,9 @@ module.exports = {
       "yellow-dark": "#CAAC42",
       gray: "#D9D9D9",
     },
+    backgroundImage: {
+      cheese: "url('./assets/cheese.jpg')",
+    },
   },
   plugins: [],
 };
