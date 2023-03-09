@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
-function Timer(props: { timeInSeconds: number }) {
+function Timer(props: { timeInSeconds: number; onTimerFinish: Function }) {
   const [timeLeft, setTimeLeft] = useState<number>(props.timeInSeconds);
 
   useEffect(() => {
     if (timeLeft > 0) {
       setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+    } else {
+      props.onTimerFinish();
     }
   }, [timeLeft]);
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import jsonData from "../data/tests-sample.json";
+import jsonData from "../data/tests.json";
 import logo from "../assets/rat-logo.png";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -10,6 +10,7 @@ type RAT = {
   solution: string;
   difficulty: string;
 };
+import Timer from "../components/Timer";
 
 const difficultyMapping: { [difficulty: string]: string } = {
   "Very Easy": "#8FD437",
@@ -26,7 +27,6 @@ function GamePage() {
   );
   const [answer, setAnswer] = useState<string>("");
   const [score, setScore] = useState<number>(0);
-  const [gameClock, setGameClock] = useState<number>(30);
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
 
   const checkAnswer = () => {
@@ -58,34 +58,16 @@ function GamePage() {
     }
   };
 
-  useEffect(() => {
-    if (gameClock > 0) {
-      setTimeout(() => {
-        setGameClock((prev) => prev - 1);
-      }, 1000);
-    } else if (score > highscore) {
+  const finishGame = () => {
+    if (score > highscore) {
       setHighscore(score);
     }
-  }, [gameClock]);
+    setGameOver(true);
+  };
 
-  return gameClock > 0 && tests.current.length > 0 ? (
-    <>
-      <div>
-        <h3 className="font-semibold text-3xl mt-5">{score}</h3>
-
-        <div
-          className="rounded-full h-20 w-20 mx-auto my-10"
-          style={{
-            backgroundImage:
-              "conic-gradient(rgb(255 222 104)" + // yellow
-              (100 - Math.round((gameClock / 30) * 100)) +
-              "%, rgb(202 172 66) " + // yellow-dark
-              (100 - Math.round((gameClock / 30) * 100)) +
-              "%)",
-          }}
-        >
-          <h1 className="font-bold text-[3rem]">{gameClock}</h1>
-        </div>
+  return !gameOver && tests.current.length > 0 ? (
+    <div>
+      <h3 className="font-semibold text-3xl mt-5">{score}</h3>
 
         <div className="flex flex-col items-center">
           <div>
@@ -117,6 +99,7 @@ function GamePage() {
             </p>
           ))}
         </div>
+      <Timer timeInSeconds={time} onTimerFinish={finishGame} />
 
         <div className="flex flex-col items-center">
           <input
