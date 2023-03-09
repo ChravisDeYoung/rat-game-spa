@@ -5,19 +5,16 @@ import jsonData from "../data/tests.json";
 import logo from "../assets/rat-logo.png";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-type RAT = {
-  items: Array<string>;
-  solution: string;
-  difficulty: string;
-};
 import Timer from "../components/Timer";
+import RatDisplay from "../components/RatDisplay";
+import { RAT } from "../types/Rat";
 
-const difficultyMapping: { [difficulty: string]: string } = {
-  "Very Easy": "#8FD437",
-  Easy: "#529200",
-  Medium: "#D4A446",
-  Hard: "#C7654F",
-  "Very Hard": "#833E2F",
+const SCORE_MAPPING: { [difficulty: string]: number } = {
+  "Very Easy": 1,
+  Easy: 2,
+  Medium: 3,
+  Hard: 4,
+  "Very Hard": 5,
 };
 
 function GamePage() {
@@ -25,36 +22,31 @@ function GamePage() {
   const [testIndex, setTestIndex] = useState(
     Math.floor(Math.random() * tests.current.length)
   );
-  const [answer, setAnswer] = useState<string>("");
   const [score, setScore] = useState<number>(0);
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
+  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [time, setTime] = useState<number>(30);
 
-  const checkAnswer = () => {
-    if (answer.toLowerCase().trim() === tests.current[testIndex].solution) {
+  const updateDisplay = () => {
+    setScore(
+      (prev) => prev + SCORE_MAPPING[tests.current[testIndex].difficulty]
+    );
+    setTime(time + 5);
+    changeTest(true);
+  };
+
+  const changeTest = (remove: boolean = false) => {
+    if (remove) {
       tests.current.splice(testIndex, 1);
       setTestIndex(Math.floor(Math.random() * tests.current.length));
-      setScore((prev) => prev + 1);
     } else {
-      // TODO: something when you're wrong
-    }
-
-    setAnswer("");
-  };
-
-  const skipTest = () => {
-    if (tests.current.length > 1) {
-      let randomIndex = Math.floor(Math.random() * tests.current.length);
-      while (randomIndex === testIndex) {
+      let randomIndex: number = Math.floor(
+        Math.random() * tests.current.length
+      );
+      while (randomIndex === testIndex && tests.current.length > 1) {
         randomIndex = Math.floor(Math.random() * tests.current.length);
       }
-
       setTestIndex(randomIndex);
-    }
-  };
-
-  const inputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      checkAnswer();
     }
   };
 
@@ -69,59 +61,14 @@ function GamePage() {
     <div>
       <h3 className="font-semibold text-3xl mt-5">{score}</h3>
 
-        <div className="flex flex-col items-center">
-          <div>
-            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[40%]">
-              <div
-                style={{
-                  backgroundColor:
-                    difficultyMapping[tests.current[testIndex].difficulty],
-                }}
-                className="h-10 w-10 relative top-[30%] left-1/4 rounded-tl-full rounded-tr-full rounded-bl-full"
-              ></div>
-            </div>
-            <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[40%]">
-              <div
-                style={{
-                  backgroundColor:
-                    difficultyMapping[tests.current[testIndex].difficulty],
-                }}
-                className="bg-very-easy h-10 w-10 relative top-[30%] left-1/4 rounded-tl-full rounded-tr-full rounded-br-full"
-              ></div>
-            </div>
-          </div>
-          {tests.current[testIndex].items.map((x, i) => (
-            <p
-              key={i}
-              className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl"
-            >
-              {x}
-            </p>
-          ))}
-        </div>
       <Timer timeInSeconds={time} onTimerFinish={finishGame} />
 
-        <div className="flex flex-col items-center">
-          <input
-            autoFocus
-            className="bg-gray font-medium py-2 w-1/2 mt-5 text-center focus:outline-black text-xl"
-            type="text"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            onKeyDown={inputKeyDown}
-          ></input>
-          <div className="mt-3 w-full">
-            <button
-              disabled={tests.current.length < 1}
-              onClick={skipTest}
-              className="bg-pink font-medium py-1 w-1/2 text-center text-sm"
-            >
-              Skip
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
+      <RatDisplay
+        rat={tests.current[testIndex]}
+        onCorrectAnswer={updateDisplay}
+        onSkipTest={() => tests.current.length > 1 && changeTest()}
+      />
+    </div>
   ) : (
     <div>
       <div>
