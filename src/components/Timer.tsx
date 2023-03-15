@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Timer(props: { timeInSeconds: number; onTimerFinish: Function }) {
-  const [timeLeft, setTimeLeft] = useState<number>(props.timeInSeconds);
+  const startTime = useRef<number>(Date.now());
+
+  const [timeLeft, setTimeLeft] = useState<number>(props.timeInSeconds * 1000);
 
   useEffect(() => {
-    if (timeLeft > 0) {
-      setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+    if (startTime.current + props.timeInSeconds * 1000 - Date.now() > 0) {
+      setTimeout(
+        () =>
+          setTimeLeft(
+            startTime.current + props.timeInSeconds * 1000 - Date.now()
+          ),
+        1000
+      );
     } else {
       props.onTimerFinish();
     }
@@ -17,13 +25,15 @@ function Timer(props: { timeInSeconds: number; onTimerFinish: Function }) {
       style={{
         backgroundImage:
           "conic-gradient(rgb(255 222 104)" + // yellow
-          (100 - Math.round((timeLeft / props.timeInSeconds) * 100)) +
+          (100 - Math.round((timeLeft / (props.timeInSeconds * 1000)) * 100)) +
           "%, rgb(202 172 66) " + // yellow-dark
-          (100 - Math.round((timeLeft / props.timeInSeconds) * 100)) +
+          (100 - Math.round((timeLeft / (props.timeInSeconds * 1000)) * 100)) +
           "%)",
       }}
     >
-      <span className="font-bold text-[3rem]">{timeLeft}</span>
+      <span className="font-bold text-[3rem]">
+        {Math.round(timeLeft / 1000)}
+      </span>
     </div>
   );
 }
