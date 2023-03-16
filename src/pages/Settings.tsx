@@ -1,31 +1,24 @@
-import { Link } from "react-router-dom";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
+import Button from "../components/Button";
+import TopRightActionIcon from "../components/TopRightActionIcon";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function SettingsPage() {
-  const [highscore, setHighscore] = useLocalStorage("highscore", 0);
+  const [setHighscore] = useLocalStorage("highscore", 0);
 
   return (
     <>
-      <Link
-        to="/"
-        className="absolute right-3 top-3 rounded-full h-14 w-14 border-black border-4"
-      >
-        <h1 className="font-bold text-[2rem]">X</h1>
-      </Link>
+      <header>
+        <TopRightActionIcon faIcon={faX} redirectPath="/" />
+        <h1 className="mt-20 font-bold text-5xl tracking-widest">settings</h1>
+      </header>
 
-      <div className="mt-20">
-        <h1 className="font-bold text-5xl tracking-widest">settings</h1>
-      </div>
+      <section className="flex flex-col items-center">
+        <Button text="reset scores" onClick={() => setHighscore(0)} />
+      </section>
 
-      <div className="flex flex-col items-center">
-        <button
-          className="bg-gray font-medium py-2 w-1/2 my-2 text-xl"
-          onClick={() => setHighscore(0)}
-        >
-          reset scores
-        </button>
-      </div>
-      <p>&nbsp;</p>
+      <span>&nbsp;</span>
     </>
   );
 }
