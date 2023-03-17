@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-
-import jsonData from "../data/tests.json";
-import logo from "../assets/rat-logo.png";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Timer from "../components/Timer";
 import RatDisplay from "../components/RatDisplay";
+import jsonData from "../data/tests.json";
 import { RAT } from "../types/Rat";
 
 const SCORE_MAPPING: { [difficulty: string]: number } = {
@@ -18,20 +15,21 @@ const SCORE_MAPPING: { [difficulty: string]: number } = {
 };
 
 function GamePage() {
-  const tests = useRef<Array<RAT>>(jsonData);
+  const navigate = useNavigate();
+
+  const tests = useRef<Array<RAT>>(jsonData.filter((x) => x.difficulty));
+
   const [testIndex, setTestIndex] = useState(
     Math.floor(Math.random() * tests.current.length)
   );
   const [score, setScore] = useState<number>(0);
-  const [highscore, setHighscore] = useLocalStorage("highscore", 0);
-  const [gameOver, setGameOver] = useState<boolean>(false);
-  const [time, setTime] = useState<number>(30);
+  const [time, setTime] = useState<number>(10);
 
   const updateDisplay = () => {
     setScore(
       (prev) => prev + SCORE_MAPPING[tests.current[testIndex].difficulty]
     );
-    setTime(time + 5);
+    setTime(time + 3);
     changeTest(true);
   };
 
@@ -50,49 +48,27 @@ function GamePage() {
     }
   };
 
-  const finishGame = () => {
-    if (score > highscore) {
-      setHighscore(score);
-    }
-    setGameOver(true);
-  };
-
-  return !gameOver && tests.current.length > 0 ? (
-    <div>
-      <h3 className="font-semibold text-3xl mt-5">{score}</h3>
-
-      <Timer timeInSeconds={time} onTimerFinish={finishGame} />
-
-      <RatDisplay
-        rat={tests.current[testIndex]}
-        onCorrectAnswer={updateDisplay}
-        onSkipTest={() => tests.current.length > 1 && changeTest()}
-      />
-    </div>
-  ) : (
-    <div>
+  return (
+    tests.current.length > 0 && (
       <div>
-        <img className="my-5 mx-auto w-3/4" src={logo} />
-        <h1 className="font-bold text-5xl tracking-widest">Game Over</h1>
-      </div>
+        <h3 className="font-semibold text-3xl mt-5">{score}</h3>
 
-      <div className="my-10">
-        <h2 className="font-semibold mb-1 text-xl">score</h2>
-        <span className="font-bold text-5xl">{score}</span>
-      </div>
+        <Timer
+          timeInSeconds={time}
+          onTimerFinish={() =>
+            navigate("/game-over", {
+              state: { score: score },
+            })
+          }
+        />
 
-      <div className="flex flex-col items-center">
-        <Link
-          className="bg-gray font-medium py-2 w-1/2 my-2 text-xl"
-          to="/game"
-        >
-          play again
-        </Link>
-        <Link className="bg-gray font-medium py-2 w-1/2 my-2 text-xl" to="/">
-          home
-        </Link>
+        <RatDisplay
+          rat={tests.current[testIndex]}
+          onCorrectAnswer={updateDisplay}
+          onSkipTest={() => tests.current.length > 1 && changeTest()}
+        />
       </div>
-    </div>
+    )
   );
 }
 
