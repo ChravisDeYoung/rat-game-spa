@@ -11,70 +11,89 @@ const DIFFICULTY_MAPPING: { [difficulty: string]: string } = {
 
 function RatDisplay(props: {
   rat: RAT;
+  disabled?: boolean;
   onCorrectAnswer: () => void;
   onSkipTest: () => void;
 }) {
   const [answer, setAnswer] = useState("");
+  const [incorrect, setIncorrect] = useState(false);
 
   const checkAnswer = () => {
     if (answer.toLowerCase().trim() === props.rat.solution) {
       props.onCorrectAnswer();
+      setAnswer("");
     } else {
-      // TODO: something when you're wrong
+      setIncorrect(true);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (incorrect) {
+      setIncorrect(false);
+      setAnswer("");
     }
 
-    setAnswer("");
+    if (e.key === "Enter") {
+      checkAnswer();
+    } else if (e.key === "ArrowRight") {
+      props.onSkipTest();
+    }
   };
 
   return (
     <div className="flex flex-col items-center">
       {/* Ears */}
-      <div>
-        <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] right-[40%]">
+      <div className="flex w-4/5 max-w-sm relative top-5 justify-between">
+        <div className="bg-gray rounded-tl-full rounded-tr-full rounded-bl-full h-24 w-24 inline-flex justify-center items-center">
           <div
             style={{
               backgroundColor: DIFFICULTY_MAPPING[props.rat.difficulty],
             }}
-            className="h-10 w-10 relative top-[30%] left-1/4 rounded-tl-full rounded-tr-full rounded-bl-full"
+            className="h-12 w-12 rounded-tl-full rounded-tr-full rounded-bl-full mt-3 ml-1"
           ></div>
         </div>
-        <div className="bg-gray rounded-full h-20 w-20 inline-block relative top-[1.6rem] left-[40%]">
+        <div className="bg-gray rounded-tl-full rounded-tr-full rounded-br-full h-24 w-24 inline-flex justify-center items-center">
           <div
             style={{
               backgroundColor: DIFFICULTY_MAPPING[props.rat.difficulty],
             }}
-            className="bg-very-easy h-10 w-10 relative top-[30%] left-1/4 rounded-tl-full rounded-tr-full rounded-br-full"
+            className="h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1"
           ></div>
         </div>
       </div>
 
       {/* Body */}
-      {props.rat.items.map((word, index) => (
-        <p
-          key={index}
-          className="bg-gray font-medium py-2 w-1/2 my-[0.1rem] text-xl"
-        >
-          {word}
-        </p>
-      ))}
+      <div className="w-2/3 max-w-xs">
+        {props.rat.items.map((word, index) => (
+          <p
+            key={index}
+            className="bg-gray py-2 my-[0.1rem] text-medium first:rounded-t-2xl w-full"
+          >
+            {word}
+          </p>
+        ))}
+      </div>
 
       {/* Answer */}
-      <input
-        autoFocus
-        className="bg-gray font-medium py-2 w-1/2 mt-5 text-center focus:outline-black text-xl"
-        type="text"
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-        onKeyDown={(e) =>
-          (e.key === "Enter" && checkAnswer()) ||
-          (e.key === "ArrowRight" && props.onSkipTest())
-        }
-      ></input>
+      <div className="w-2/3 mt-5 max-w-xs">
+        <input
+          autoFocus
+          className={`w-full py-2 text-center focus:outline-none border-2 border-gray text-medium  bg-gray rounded-b-2xl focus:border-gray-dark ${
+            incorrect && "text-difficulty-hard animate-incorrect"
+          }`}
+          disabled={props.disabled}
+          type="text"
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
+        ></input>
+      </div>
 
       {/* Skip */}
       <button
+        className="bg-pink max-w-xs hover:bg-pink-dark border-2 border-b-4 border-pink-dark rounded-2xl py-1 mt-2 w-2/3 text-center text-small"
+        disabled={props.disabled}
         onClick={props.onSkipTest}
-        className="bg-pink font-medium py-1 mt-2 w-1/2 text-center text-sm"
       >
         skip
       </button>

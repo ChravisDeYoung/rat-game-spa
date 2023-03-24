@@ -5,6 +5,8 @@ import Timer from "../components/Timer";
 import RatDisplay from "../components/RatDisplay";
 import jsonData from "../data/tests.json";
 import { RAT } from "../types/Rat";
+import soundEffect from "../assets/rat-squeak.mp3";
+import { useMusic } from "../components/Layout";
 
 const SCORE_MAPPING: { [difficulty: string]: number } = {
   "Very Easy": 1,
@@ -17,19 +19,25 @@ const SCORE_MAPPING: { [difficulty: string]: number } = {
 function GamePage() {
   const navigate = useNavigate();
 
+  const { soundEffectsEnabled } = useMusic();
   const tests = useRef<Array<RAT>>(jsonData.filter((x) => x.difficulty));
+  const soundEffects = useRef<HTMLAudioElement>(new Audio(soundEffect));
 
   const [testIndex, setTestIndex] = useState(
     Math.floor(Math.random() * tests.current.length)
   );
   const [score, setScore] = useState<number>(0);
-  const [time, setTime] = useState<number>(10);
+  const [time, setTime] = useState<number>(15);
 
   const updateDisplay = () => {
+    if (soundEffectsEnabled) {
+      soundEffects.current.play();
+    }
+
     setScore(
       (prev) => prev + SCORE_MAPPING[tests.current[testIndex].difficulty]
     );
-    setTime(time + 3);
+    setTime(time + 5);
     changeTest(true);
   };
 
@@ -51,7 +59,7 @@ function GamePage() {
   return (
     tests.current.length > 0 && (
       <div>
-        <h3 className="font-semibold text-3xl mt-5">{score}</h3>
+        <h3 className="font-bold text-medium mt-5">{score}</h3>
 
         <Timer
           timeInSeconds={time}

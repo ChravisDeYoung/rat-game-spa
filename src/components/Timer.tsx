@@ -2,11 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 function Timer(props: { timeInSeconds: number; onTimerFinish: Function }) {
   const startTime = useRef<number>(convertToSeconds(Date.now()));
-  const [timeLeft, setTimeLeft] = useState<number>(props.timeInSeconds);
 
-  function convertToSeconds(milliseconds: number): number {
-    return Math.round(milliseconds / 1000);
-  }
+  const [timeLeft, setTimeLeft] = useState<number>(props.timeInSeconds);
 
   useEffect(() => {
     if (
@@ -27,9 +24,13 @@ function Timer(props: { timeInSeconds: number; onTimerFinish: Function }) {
     }
   }, [timeLeft]);
 
+  function convertToSeconds(milliseconds: number): number {
+    return Math.round(milliseconds / 1000);
+  }
+
   return (
     <div
-      className="rounded-full h-20 w-20 mx-auto my-10"
+      className="flex rounded-full h-20 w-20 mx-auto my-5 items-center justify-center"
       style={{
         backgroundImage:
           "conic-gradient(rgb(255 222 104)" + // yellow
