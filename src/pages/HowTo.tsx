@@ -1,10 +1,7 @@
 import { faArrowRight, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-import {
-  TopRightActionIcon,
-  TopRightActionIconButton,
-} from "../components/TopRightActionIcon";
+import TopRightIconButton from "../components/TopRightIconButton";
 
 const instructions = [
   "each screen will present three cue words that are linked by a fourth word, which is the correct answer",
@@ -24,9 +21,9 @@ function HowToPage() {
     <>
       <header>
         {page === instructions.length - 1 ? (
-          <TopRightActionIcon faIcon={faX} redirectPath="/" />
+          <TopRightIconButton faIcon={faX} redirectPath="/" />
         ) : (
-          <TopRightActionIconButton
+          <TopRightIconButton
             faIcon={faArrowRight}
             onClick={() => setPage(page + 1)}
           />

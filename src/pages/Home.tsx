@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 import logo from "../assets/rat-logo.png";
-import { ButtonLink } from "../components/Buttons";
-import { TopRightActionIcon } from "../components/TopRightActionIcon";
+import Button from "../components/Button";
+import TopRightIconButton from "../components/TopRightIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function HomePage() {
@@ -65,7 +65,7 @@ function HomePage() {
   return (
     <>
       <header>
-        <TopRightActionIcon faIcon={faQuestion} redirectPath="/how-to" />
+        <TopRightIconButton faIcon={faQuestion} redirectPath="/how-to" />
         <img className="my-5 mx-auto w-3/4 max-w-xs" src={logo} />
         <h1 className="text-big font-bold">
           <span className="bg-black text-yellow inline-flex h-20 w-20 items-center justify-center rounded-full">
@@ -82,8 +82,8 @@ function HomePage() {
       </header>
 
       <section className="flex flex-col items-center">
-        <ButtonLink redirectPath="/game" text="play" />
-        <ButtonLink redirectPath="/settings" text="settings" />
+        <Button redirectPath="/game" text="play" />
+        <Button redirectPath="/settings" text="settings" />
       </section>
 
       <section className="my-5">

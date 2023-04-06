@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import { Button } from "../components/Buttons";
-import { TopRightActionIcon } from "../components/TopRightActionIcon";
+import Button from "../components/Button";
+import TopRightIconButton from "../components/TopRightIconButton";
 import { useMusic } from "../components/Layout";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -26,7 +26,7 @@ function SettingsPage() {
   return (
     <>
       <header>
-        <TopRightActionIcon faIcon={faX} redirectPath="/" />
+        <TopRightIconButton faIcon={faX} redirectPath="/" />
         <h1 className="mt-20 font-bold text-big tracking-widest">settings</h1>
       </header>
 
