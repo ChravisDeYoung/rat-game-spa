@@ -1,14 +1,13 @@
 import { faX, faMusic, faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useState } from "react";
 
 import Button from "../components/Button";
 import TopRightIconButton from "../components/TopRightIconButton";
 import { useMusic } from "../components/Layout";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-function SettingsPage() {
+export default function SettingsPage() {
   const { music, soundEffectsEnabled, setSoundEffectsEnabled } = useMusic();
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
   const [isOpen, setIsOpen] = useState(false);
@@ -23,8 +22,14 @@ function SettingsPage() {
     setIsMusicPlaying(!music.paused);
   };
 
+  const resetHighscore = () => {
+    setHighscore(0);
+    setIsOpen(false);
+  };
+
   return (
     <>
+      {/* Settings Page */}
       <header>
         <TopRightIconButton faIcon={faX} redirectPath="/" />
         <h1 className="mt-20 font-bold text-big tracking-widest">settings</h1>
@@ -63,20 +68,18 @@ function SettingsPage() {
 
       <span>&nbsp;</span>
 
+      {/* Reset Confirmation Page */}
       <section
         className={`bg-black h-screen w-screen z-0 absolute transition-[top] duration-[500ms] top-0 left-0 ${
           !isOpen && "top-[-100vh]"
         }`}
       >
         <div className="max-w-screen-sm mx-auto h-screen flex flex-col justify-between ">
-          <button
-            className="absolute right-3 top-3 rounded-full h-14 w-14 border-4 border-yellow hover:bg-yellow text-yellow hover:text-black"
+          <TopRightIconButton
+            faIcon={faX}
+            invert={true}
             onClick={() => setIsOpen(false)}
-          >
-            <span className="text-[2rem]">
-              <FontAwesomeIcon icon={faX} />
-            </span>
-          </button>
+          />
 
           <div>
             <h1 className="mt-20 font-bold text-big tracking-widest text-yellow px-5">
@@ -92,19 +95,13 @@ function SettingsPage() {
             <span className="font-bold text-big">{highscore}</span>
           </div>
 
-          <button
-            className="bg-yellow hover:bg-yellow-dark py-2 w-2/3 mb-10 text-medium rounded-2xl max-w-xs mx-auto"
-            onClick={() => {
-              setHighscore(0);
-              setIsOpen(false);
-            }}
-          >
-            confirm
-          </button>
+          <Button
+            text="confirm"
+            className="bg-yellow hover:bg-yellow-dark mb-10 mx-auto"
+            onClick={resetHighscore}
+          ></Button>
         </div>
       </section>
     </>
   );
 }
-
-export default SettingsPage;

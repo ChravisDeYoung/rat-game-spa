@@ -4,7 +4,7 @@ import logo from "../assets/rat-logo.png";
 import Button from "../components/Button";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-function GameOverPage() {
+export default function GameOverPage() {
   const { state } = useLocation();
   const { score } = state;
 
@@ -12,9 +12,6 @@ function GameOverPage() {
   const [newHighscore, setNewHighscore] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("score", score);
-    console.log("highscore", highscore);
-
     if (score > highscore) {
       setHighscore(score);
       setNewHighscore(true);
@@ -46,5 +43,3 @@ function GameOverPage() {
     </>
   );
 }
-
-export default GameOverPage;
