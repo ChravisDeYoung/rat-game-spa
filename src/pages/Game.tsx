@@ -7,20 +7,24 @@ import jsonData from "../data/tests.json";
 import { RAT } from "../types/Rat";
 import soundEffect from "../assets/rat-squeak.mp3";
 import { useMusic } from "../components/Layout";
-
-const SCORE_MAPPING: { [difficulty: string]: number } = {
-  "Very Easy": 1,
-  Easy: 2,
-  Medium: 3,
-  Hard: 4,
-  "Very Hard": 5,
-};
+import { Difficulty } from "../types/Difficulty";
+import { DIFFICULTY_MAP } from "../data/constants";
 
 function GamePage() {
   const navigate = useNavigate();
 
   const { soundEffectsEnabled } = useMusic();
-  const tests = useRef<Array<RAT>>(jsonData.filter((x) => x.difficulty));
+  const tests = useRef<Array<RAT>>(
+    jsonData
+      .filter((obj) => Difficulty.hasOwnProperty(obj.difficulty))
+      .map((obj) => {
+        return {
+          items: obj.items,
+          solution: obj.solution,
+          difficulty: Difficulty[obj.difficulty as keyof typeof Difficulty],
+        };
+      })
+  );
   const soundEffects = useRef<HTMLAudioElement>(new Audio(soundEffect));
 
   const [testIndex, setTestIndex] = useState(
@@ -35,7 +39,7 @@ function GamePage() {
     }
 
     setScore(
-      (prev) => prev + SCORE_MAPPING[tests.current[testIndex].difficulty]
+      (prev) => prev + DIFFICULTY_MAP[tests.current[testIndex].difficulty].score
     );
     setTime(time + 5);
     changeTest(true);

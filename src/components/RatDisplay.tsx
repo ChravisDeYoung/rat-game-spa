@@ -1,13 +1,6 @@
 import { useState } from "react";
+import { DIFFICULTY_MAP } from "../data/constants";
 import { RAT } from "../types/Rat";
-
-const DIFFICULTY_MAPPING: { [difficulty: string]: string } = {
-  "Very Easy": "#8FD437",
-  Easy: "#529200",
-  Medium: "#D4A446",
-  Hard: "#C7654F",
-  "Very Hard": "#833E2F",
-};
 
 function RatDisplay(props: {
   rat: RAT;
@@ -47,7 +40,7 @@ function RatDisplay(props: {
         <div className="bg-gray rounded-tl-full rounded-tr-full rounded-bl-full h-24 w-24 inline-flex justify-center items-center">
           <div
             style={{
-              backgroundColor: DIFFICULTY_MAPPING[props.rat.difficulty],
+              backgroundColor: DIFFICULTY_MAP[props.rat.difficulty].color,
             }}
             className="h-12 w-12 rounded-tl-full rounded-tr-full rounded-bl-full mt-3 ml-1"
           ></div>
@@ -55,7 +48,7 @@ function RatDisplay(props: {
         <div className="bg-gray rounded-tl-full rounded-tr-full rounded-br-full h-24 w-24 inline-flex justify-center items-center">
           <div
             style={{
-              backgroundColor: DIFFICULTY_MAPPING[props.rat.difficulty],
+              backgroundColor: DIFFICULTY_MAP[props.rat.difficulty].color,
             }}
             className="h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1"
           ></div>
