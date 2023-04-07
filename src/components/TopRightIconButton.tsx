@@ -1,10 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
-
-import soundEffect from "../assets/button-click.mp3";
-import { useMusic } from "./Layout";
+import { useSoundContext } from "../hooks/useSoundContext";
 
 export default function TopRightIconButton(props: {
   faIcon: IconProp;
@@ -12,16 +9,15 @@ export default function TopRightIconButton(props: {
   onClick?: () => void;
   invert?: boolean;
 }) {
-  const { soundEffectsEnabled } = useMusic();
-  const soundEffects = useRef<HTMLAudioElement>(new Audio(soundEffect));
+  const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 
   const COLOR_CLASSES = props.invert
     ? "border-yellow hover:bg-yellow text-yellow hover:text-black"
     : "border-black hover:bg-black hover:text-yellow";
 
   const handleButtonClick = async () => {
-    if (soundEffectsEnabled) {
-      await soundEffects.current.play();
+    if (soundEffectEnabled) {
+      soundEffectRef.current.play();
     }
 
     props.onClick?.();

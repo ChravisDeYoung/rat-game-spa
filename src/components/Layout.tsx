@@ -1,39 +1,35 @@
 import { useEffect, useRef, useState } from "react";
-import { Outlet, useOutletContext } from "react-router-dom";
-
-import soundtrack from "../assets/soundtrack.mp3";
-
-type ContextType = {
-  music: HTMLAudioElement;
-  soundEffectsEnabled: boolean;
-  setSoundEffectsEnabled: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { Outlet } from "react-router-dom";
+import soundEffect from "../assets/button-click.mp3";
+import musicSource from "../assets/soundtrack.mp3";
 
 function Layout() {
-  const [music] = useState<HTMLAudioElement>(new Audio(soundtrack));
-  const [soundEffectsEnabled, setSoundEffectsEnabled] = useState<boolean>(true);
+  const musicRef = useRef(new Audio(musicSource));
+  const soundEffectRef = useRef(new Audio(soundEffect));
+  const [soundEffectEnabled, setSoundEffectEnabled] = useState(true);
 
   useEffect(() => {
-    music.volume = 0.05;
-    music.loop = true;
-    // music.play().catch(() => {
-    //   document.addEventListener("click", () => music.play(), {
-    //     once: true,
-    //   });
-    // });
+    musicRef.current.volume = 0.05;
+    musicRef.current.loop = true;
+    musicRef.current.play().catch(() => {
+      document.addEventListener("click", () => musicRef.current.play(), {
+        once: true,
+      });
+    });
   }, []);
 
   return (
     <div className="flex flex-col justify-between h-screen text-center max-w-screen-sm mx-auto">
       <Outlet
-        context={{ music, soundEffectsEnabled, setSoundEffectsEnabled }}
+        context={{
+          musicRef,
+          soundEffectRef,
+          soundEffectEnabled,
+          setSoundEffectEnabled,
+        }}
       />
     </div>
   );
 }
 
 export default Layout;
-
-export function useMusic() {
-  return useOutletContext<ContextType>();
-}

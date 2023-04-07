@@ -1,19 +1,15 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import Timer from "../components/Timer";
 import RatDisplay from "../components/RatDisplay";
-import jsonData from "../data/tests.json";
-import { RAT } from "../types/Rat";
-import soundEffect from "../assets/rat-squeak.mp3";
-import { useMusic } from "../components/Layout";
-import { Difficulty } from "../types/Difficulty";
+import Timer from "../components/Timer";
 import { DIFFICULTY_MAP } from "../data/constants";
+import jsonData from "../data/tests.json";
+import { Difficulty } from "../types/Difficulty";
+import { RAT } from "../types/Rat";
 
 function GamePage() {
   const navigate = useNavigate();
 
-  const { soundEffectsEnabled } = useMusic();
   const tests = useRef<Array<RAT>>(
     jsonData
       .filter((obj) => Difficulty.hasOwnProperty(obj.difficulty))
@@ -25,7 +21,6 @@ function GamePage() {
         };
       })
   );
-  const soundEffects = useRef<HTMLAudioElement>(new Audio(soundEffect));
 
   const [testIndex, setTestIndex] = useState(
     Math.floor(Math.random() * tests.current.length)
@@ -34,10 +29,6 @@ function GamePage() {
   const [time, setTime] = useState<number>(15);
 
   const updateDisplay = () => {
-    if (soundEffectsEnabled) {
-      soundEffects.current.play();
-    }
-
     setScore(
       (prev) => prev + DIFFICULTY_MAP[tests.current[testIndex].difficulty].score
     );
@@ -60,27 +51,27 @@ function GamePage() {
     }
   };
 
-  return (
-    tests.current.length > 0 && (
-      <div>
-        <h3 className="font-bold text-medium mt-5">{score}</h3>
+  return tests.current.length > 0 ? (
+    <div>
+      <h3 className="font-bold text-medium mt-5">{score}</h3>
 
-        <Timer
-          timeInSeconds={time}
-          onTimerFinish={() =>
-            navigate("/game-over", {
-              state: { score: score },
-            })
-          }
-        />
+      <Timer
+        timeInSeconds={time}
+        onTimerFinish={() =>
+          navigate("/game-over", {
+            state: { score: score },
+          })
+        }
+      />
 
-        <RatDisplay
-          rat={tests.current[testIndex]}
-          onCorrectAnswer={updateDisplay}
-          onSkipTest={() => tests.current.length > 1 && changeTest()}
-        />
-      </div>
-    )
+      <RatDisplay
+        rat={tests.current[testIndex]}
+        onCorrectAnswer={updateDisplay}
+        onSkipTest={() => tests.current.length > 1 && changeTest()}
+      />
+    </div>
+  ) : (
+    <div>you win I guess</div>
   );
 }
 

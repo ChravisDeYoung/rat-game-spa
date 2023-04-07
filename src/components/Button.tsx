@@ -1,8 +1,5 @@
-import { useRef } from "react";
 import { Link } from "react-router-dom";
-
-import soundEffect from "../assets/button-click.mp3";
-import { useMusic } from "./Layout";
+import { useSoundContext } from "../hooks/useSoundContext";
 
 export default function Button(props: {
   redirectPath?: string;
@@ -10,13 +7,13 @@ export default function Button(props: {
   className?: string;
   onClick?: () => void;
 }) {
-  const { soundEffectsEnabled } = useMusic();
-  const soundEffects = useRef<HTMLAudioElement>(new Audio(soundEffect));
+  const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 
-  const handleButtonClick = async () => {
-    if (soundEffectsEnabled) {
-      await soundEffects.current.play();
+  const handleButtonClick = () => {
+    if (soundEffectEnabled) {
+      soundEffectRef.current.play();
     }
+
     props.onClick?.();
   };
 

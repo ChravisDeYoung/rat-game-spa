@@ -1,30 +1,31 @@
-import { faX, faMusic, faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
+import { faMusic, faVolumeHigh, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-
 import Button from "../components/Button";
 import TopRightIconButton from "../components/TopRightIconButton";
-import { useMusic } from "../components/Layout";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useSoundContext } from "../hooks/useSoundContext";
 
 export default function SettingsPage() {
-  const { music, soundEffectsEnabled, setSoundEffectsEnabled } = useMusic();
+  const { musicRef, soundEffectEnabled, setSoundEffectEnabled } =
+    useSoundContext();
+  const [musicEnabled, setMusicEnabled] = useState(!musicRef.current.paused);
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
   const [isOpen, setIsOpen] = useState(false);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(!music.paused);
-
-  const toggleMusic = () => {
-    if (isMusicPlaying) {
-      music.pause();
-    } else {
-      music.play();
-    }
-    setIsMusicPlaying(!music.paused);
-  };
 
   const resetHighscore = () => {
     setHighscore(0);
     setIsOpen(false);
+  };
+
+  const toggleMusic = () => {
+    if (musicRef.current.paused) {
+      musicRef.current.play();
+    } else {
+      musicRef.current.pause();
+    }
+
+    setMusicEnabled(!musicRef.current.paused);
   };
 
   return (
@@ -38,28 +39,28 @@ export default function SettingsPage() {
       <section className="flex flex-col items-center">
         <div className="flex justify-between w-2/3 max-w-xs">
           <button
-            onClick={toggleMusic}
             className={`rounded-2xl border-2 border-b-4 w-[49%] py-3 ${
-              isMusicPlaying ? "bg-gray" : "bg-black"
+              musicEnabled ? "bg-gray" : "bg-black"
             }`}
+            onClick={toggleMusic}
           >
             <FontAwesomeIcon
               icon={faMusic}
               size="xl"
-              className={`${!isMusicPlaying && "text-yellow"}`}
+              className={`${!musicEnabled && "text-yellow"}`}
             />
           </button>
 
           <button
-            onClick={() => setSoundEffectsEnabled(!soundEffectsEnabled)}
             className={`rounded-2xl border-2 border-b-4 w-[49%] py-2 ${
-              soundEffectsEnabled ? "bg-gray" : "bg-black"
+              soundEffectEnabled ? "bg-gray" : "bg-black"
             }`}
+            onClick={() => setSoundEffectEnabled(!soundEffectEnabled)}
           >
             <FontAwesomeIcon
               icon={faVolumeHigh}
               size="xl"
-              className={`${!soundEffectsEnabled && "text-yellow"}`}
+              className={`${!soundEffectEnabled && "text-yellow"}`}
             />
           </button>
         </div>
