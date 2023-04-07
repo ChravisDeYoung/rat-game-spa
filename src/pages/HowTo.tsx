@@ -1,7 +1,7 @@
 import { faArrowRight, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-import TopRightIconButton from "../components/TopRightIconButton";
+import { CircleIconButton } from "../components/CircleIconButton";
 
 const instructions = [
   "each screen will present three cue words that are linked by a fourth word, which is the correct answer",
@@ -21,11 +21,16 @@ function HowToPage() {
     <>
       <header>
         {page === instructions.length - 1 ? (
-          <TopRightIconButton faIcon={faX} redirectPath="/" />
+          <CircleIconButton
+            faIcon={faX}
+            redirectPath="/"
+            className="absolute right-3 top-3"
+          />
         ) : (
-          <TopRightIconButton
+          <CircleIconButton
             faIcon={faArrowRight}
             onClick={() => setPage(page + 1)}
+            className="absolute right-3 top-3"
           />
         )}
 

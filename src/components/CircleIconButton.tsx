@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useSoundContext } from "../hooks/useSoundContext";
 
-export default function TopRightIconButton(props: {
+export function CircleIconButton(props: {
   faIcon: IconProp;
   redirectPath?: string;
   onClick?: () => void;
   invert?: boolean;
+  className?: string;
 }) {
   const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 
@@ -15,7 +16,7 @@ export default function TopRightIconButton(props: {
     ? "border-yellow hover:bg-yellow text-yellow hover:text-black"
     : "border-black hover:bg-black hover:text-yellow";
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = () => {
     if (soundEffectEnabled) {
       soundEffectRef.current.play();
     }
@@ -27,7 +28,7 @@ export default function TopRightIconButton(props: {
     return (
       <Link
         to={props.redirectPath}
-        className={`absolute right-3 top-3 rounded-full h-14 w-14 border-4 flex items-center justify-center ${COLOR_CLASSES}`}
+        className={`rounded-full h-14 w-14 border-4 flex items-center justify-center ${COLOR_CLASSES} ${props.className}`}
         onClick={handleButtonClick}
       >
         <span className="text-[2rem] flex justify-center">
@@ -39,7 +40,7 @@ export default function TopRightIconButton(props: {
     return (
       <button
         onClick={handleButtonClick}
-        className={`absolute right-3 top-3 rounded-full h-14 w-14 border-4 flex items-center justify-center ${COLOR_CLASSES}`}
+        className={`rounded-full h-14 w-14 border-4 flex items-center justify-center ${COLOR_CLASSES} ${props.className}`}
       >
         <span className="text-[2rem] flex justify-center">
           <FontAwesomeIcon icon={props.faIcon} />

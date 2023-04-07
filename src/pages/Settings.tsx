@@ -2,7 +2,7 @@ import { faMusic, faVolumeHigh, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import Button from "../components/Button";
-import TopRightIconButton from "../components/TopRightIconButton";
+import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
 
@@ -32,7 +32,11 @@ export default function SettingsPage() {
     <>
       {/* Settings Page */}
       <header>
-        <TopRightIconButton faIcon={faX} redirectPath="/" />
+        <CircleIconButton
+          faIcon={faX}
+          redirectPath="/"
+          className="absolute right-3 top-3"
+        />
         <h1 className="mt-20 font-bold text-big tracking-widest">settings</h1>
       </header>
 
@@ -76,10 +80,11 @@ export default function SettingsPage() {
         }`}
       >
         <div className="max-w-screen-sm mx-auto h-screen flex flex-col justify-between ">
-          <TopRightIconButton
+          <CircleIconButton
             faIcon={faX}
             invert={true}
             onClick={() => setIsOpen(false)}
+            className="absolute right-3 top-3"
           />
 
           <div>
