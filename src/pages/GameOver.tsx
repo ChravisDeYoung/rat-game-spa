@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import logo from "../assets/rat-logo.png";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function GameOverPage() {
@@ -37,8 +37,12 @@ export default function GameOverPage() {
       </div>
 
       <section className="flex flex-col items-center my-5">
-        <Button redirectPath="/game" text="play again" />
-        <Button redirectPath="/" text="home" />
+        <Button redirectPath="/game" className="bg-gray hover:bg-gray-dark">
+          play again
+        </Button>
+        <Button redirectPath="/" className="bg-gray hover:bg-gray-dark">
+          home
+        </Button>
       </section>
     </>
   );

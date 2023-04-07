@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useSoundContext } from "../hooks/useSoundContext";
 
-export default function Button(props: {
-  redirectPath?: string;
-  text: string;
+export function Button(props: {
   className?: string;
+  children: React.ReactNode;
+  redirectPath?: string;
   onClick?: () => void;
 }) {
   const { soundEffectRef, soundEffectEnabled } = useSoundContext();
@@ -21,20 +21,20 @@ export default function Button(props: {
   if (props.redirectPath) {
     return (
       <Link
-        className={`bg-gray hover:bg-gray-dark py-2 w-2/3 my-2 text-medium border-2 border-b-4 active:border-b-2 rounded-2xl max-w-xs ${props.className}`}
+        className={`py-2 w-2/3 my-2 text-medium border-2 border-b-4 active:border-b-2 rounded-2xl max-w-xs ${props.className}`}
         to={props.redirectPath}
         onClick={handleButtonClick}
       >
-        {props.text}
+        {props.children}
       </Link>
     );
   } else {
     return (
       <button
-        className={`bg-gray hover:bg-gray-dark py-2 w-2/3 my-2 text-medium border-2 border-b-4 active:border-b-2 rounded-2xl max-w-xs ${props.className}`}
+        className={`py-2 w-2/3 my-2 text-medium border-2 border-b-4 active:border-b-2 rounded-2xl max-w-xs ${props.className}`}
         onClick={handleButtonClick}
       >
-        {props.text}
+        {props.children}
       </button>
     );
   }

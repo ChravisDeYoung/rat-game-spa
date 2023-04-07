@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DIFFICULTY_MAP } from "../data/constants";
 import { RAT } from "../types/Rat";
+import { Button } from "./Button";
 
 function RatDisplay(props: {
   rat: RAT;
@@ -83,13 +84,12 @@ function RatDisplay(props: {
       </div>
 
       {/* Skip */}
-      <button
-        className="bg-pink max-w-xs hover:bg-pink-dark border-2 border-b-4 border-pink-dark rounded-2xl py-1 mt-2 w-2/3 text-center text-small"
-        disabled={props.disabled}
+      <Button
+        className="bg-pink hover:bg-pink-dark border-pink-dark text-small"
         onClick={props.onSkipTest}
       >
         skip
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { faMusic, faVolumeHigh, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
@@ -42,33 +42,38 @@ export default function SettingsPage() {
 
       <section className="flex flex-col items-center">
         <div className="flex justify-between w-2/3 max-w-xs">
-          <button
-            className={`rounded-2xl border-2 border-b-4 w-[49%] py-3 ${
-              musicEnabled ? "bg-gray" : "bg-black"
+          <Button
+            className={`w-[49%] ${
+              musicEnabled ? "bg-gray hover:bg-gray-dark" : "bg-black"
             }`}
             onClick={toggleMusic}
           >
             <FontAwesomeIcon
               icon={faMusic}
-              size="xl"
-              className={`${!musicEnabled && "text-yellow"}`}
+              size="lg"
+              className={`${musicEnabled ? "" : "text-yellow"}`}
             />
-          </button>
+          </Button>
 
-          <button
-            className={`rounded-2xl border-2 border-b-4 w-[49%] py-2 ${
-              soundEffectEnabled ? "bg-gray" : "bg-black"
+          <Button
+            className={`w-[49%] ${
+              soundEffectEnabled ? "bg-gray hover:bg-gray-dark" : "bg-black"
             }`}
             onClick={() => setSoundEffectEnabled(!soundEffectEnabled)}
           >
             <FontAwesomeIcon
               icon={faVolumeHigh}
-              size="xl"
-              className={`${!soundEffectEnabled && "text-yellow"}`}
+              size="lg"
+              className={`${soundEffectEnabled ? "" : "text-yellow"}`}
             />
-          </button>
+          </Button>
         </div>
-        <Button text="reset scores" onClick={() => setIsOpen(true)} />
+        <Button
+          onClick={() => setIsOpen(true)}
+          className="bg-gray hover:bg-gray-dark"
+        >
+          reset scores
+        </Button>
       </section>
 
       <span>&nbsp;</span>
@@ -102,10 +107,11 @@ export default function SettingsPage() {
           </div>
 
           <Button
-            text="confirm"
             className="bg-yellow hover:bg-yellow-dark mb-10 mx-auto"
             onClick={resetHighscore}
-          ></Button>
+          >
+            confirm
+          </Button>
         </div>
       </section>
     </>

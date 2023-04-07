@@ -1,7 +1,7 @@
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "../assets/rat-logo.png";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -32,8 +32,12 @@ export default function HomePage() {
       </header>
 
       <section className="flex flex-col items-center">
-        <Button redirectPath="/game" text="play" />
-        <Button redirectPath="/settings" text="settings" />
+        <Button redirectPath="/game" className="bg-gray hover:bg-gray-dark">
+          play
+        </Button>
+        <Button redirectPath="/settings" className="bg-gray hover:bg-gray-dark">
+          settings
+        </Button>
       </section>
 
       <section className="my-5">
