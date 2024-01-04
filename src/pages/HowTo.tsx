@@ -2,6 +2,8 @@ import { faArrowRight, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 import { CircleIconButton } from "../components/CircleIconButton";
+import { RatEars } from "../components/RatEars";
+import { RatBody } from "../components/RatBody";
 
 const instructions = [
   "each screen will present three cue words that are linked by a fourth word, which is the correct answer",
@@ -21,6 +23,7 @@ function HowToPage() {
     <>
       <header>
         {page === instructions.length - 1 ? (
+          // on the last page
           <CircleIconButton
             faIcon={faX}
             redirectPath="/"
@@ -116,35 +119,15 @@ function HowToPage() {
         <>
           <div className="flex flex-col items-center">
             <div className={`w-full ${page === 2 && "opacity-40"}`}>
-              {/* Ears */}
-              <div
-                className={`flex w-4/5 max-w-sm relative top-5 justify-between mx-auto ${
-                  page === 0 && "opacity-40"
-                }`}
-              >
-                <div className="bg-gray rounded-tl-full rounded-tr-full rounded-bl-full h-24 w-24 inline-flex justify-center items-center">
-                  <div className="h-12 w-12 rounded-tl-full rounded-tr-full rounded-bl-full mt-3 ml-1 bg-pink"></div>
-                </div>
-                <div className="bg-gray rounded-tl-full rounded-tr-full rounded-br-full h-24 w-24 inline-flex justify-center items-center">
-                  <div className="h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1 bg-pink"></div>
-                </div>
-              </div>
+              <RatEars
+                className={`mx-auto ${page === 0 && "opacity-40"}`}
+                color="#FF9B9B"
+              />
 
-              {/* Body */}
-              <div
-                className={`w-2/3 max-w-xs mx-auto ${
-                  page === 1 && "opacity-40"
-                }`}
-              >
-                {words.map((word, index) => (
-                  <p
-                    key={index}
-                    className="bg-gray py-2 my-[0.1rem] text-medium first:rounded-t-2xl w-full"
-                  >
-                    {word}
-                  </p>
-                ))}
-              </div>
+              <RatBody
+                className={`mx-auto ${page === 1 && "opacity-40"}`}
+                words={["cottage", "swiss", "cake"]}
+              />
             </div>
 
             {/* Answer */}
