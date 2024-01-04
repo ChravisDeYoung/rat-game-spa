@@ -37,10 +37,16 @@ export default function GameOverPage() {
       </div>
 
       <section className="flex flex-col items-center my-5">
-        <Button redirectPath="/game" className="bg-gray hover:bg-gray-dark">
+        <Button
+          redirectPath="/game"
+          className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+        >
           play again
         </Button>
-        <Button redirectPath="/" className="bg-gray hover:bg-gray-dark">
+        <Button
+          redirectPath="/"
+          className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+        >
           home
         </Button>
       </section>

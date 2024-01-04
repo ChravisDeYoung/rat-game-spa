@@ -85,7 +85,7 @@ function RatDisplay(props: {
 
       {/* Skip */}
       <Button
-        className="bg-pink hover:bg-pink-dark border-pink-dark text-small"
+        className="bg-pink active:bg-pink-dark lg:hover:bg-pink-dark border-pink-dark text-small"
         onClick={props.onSkipTest}
       >
         skip

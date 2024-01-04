@@ -44,7 +44,9 @@ export default function SettingsPage() {
         <div className="flex justify-between w-2/3 max-w-xs">
           <Button
             className={`w-[49%] ${
-              musicEnabled ? "bg-gray hover:bg-gray-dark" : "bg-black"
+              musicEnabled
+                ? "bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+                : "bg-black"
             }`}
             onClick={toggleMusic}
           >
@@ -57,7 +59,9 @@ export default function SettingsPage() {
 
           <Button
             className={`w-[49%] ${
-              soundEffectEnabled ? "bg-gray hover:bg-gray-dark" : "bg-black"
+              soundEffectEnabled
+                ? "bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+                : "bg-black"
             }`}
             onClick={() => setSoundEffectEnabled(!soundEffectEnabled)}
           >
@@ -70,7 +74,7 @@ export default function SettingsPage() {
         </div>
         <Button
           onClick={() => setIsOpen(true)}
-          className="bg-gray hover:bg-gray-dark"
+          className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           reset scores
         </Button>
@@ -80,11 +84,11 @@ export default function SettingsPage() {
 
       {/* Reset Confirmation Page */}
       <section
-        className={`bg-black h-screen w-screen z-0 absolute transition-[top] duration-[500ms] top-0 left-0 ${
+        className={`bg-black h-full w-screen z-0 absolute transition-[top] duration-[500ms] top-0 left-0 ${
           !isOpen && "top-[-100vh]"
         }`}
       >
-        <div className="max-w-screen-sm mx-auto h-screen flex flex-col justify-between ">
+        <div className="max-w-screen-sm mx-auto h-full flex flex-col justify-between ">
           <CircleIconButton
             faIcon={faX}
             invert={true}
@@ -107,7 +111,7 @@ export default function SettingsPage() {
           </div>
 
           <Button
-            className="bg-yellow hover:bg-yellow-dark mb-10 mx-auto"
+            className="bg-yellow active:bg-yellow-dark lg:hover:bg-yellow-dark mb-10 mx-auto"
             onClick={resetHighscore}
           >
             confirm

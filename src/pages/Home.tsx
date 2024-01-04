@@ -32,10 +32,16 @@ export default function HomePage() {
       </header>
 
       <section className="flex flex-col items-center">
-        <Button redirectPath="/game" className="bg-gray hover:bg-gray-dark">
+        <Button
+          redirectPath="/game"
+          className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+        >
           play
         </Button>
-        <Button redirectPath="/settings" className="bg-gray hover:bg-gray-dark">
+        <Button
+          redirectPath="/settings"
+          className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+        >
           settings
         </Button>
       </section>

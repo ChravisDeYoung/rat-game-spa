@@ -13,8 +13,8 @@ export function CircleIconButton(props: {
   const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 
   const COLOR_CLASSES = props.invert
-    ? "border-yellow hover:bg-yellow text-yellow hover:text-black"
-    : "border-black hover:bg-black hover:text-yellow";
+    ? "border-yellow text-yellow active:bg-yellow lg:hover:bg-yellow active:text-black lg:hover:text-black"
+    : "border-black active:bg-black lg:hover:bg-black active:text-yellow lg:hover:text-yellow";
 
   const handleButtonClick = () => {
     if (soundEffectEnabled) {

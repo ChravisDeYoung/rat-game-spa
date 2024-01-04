@@ -9,7 +9,7 @@ import GameOverPage from "./pages/GameOver";
 
 function App() {
   return (
-    <div className="bg-cheese">
+    <div className="bg-cheese h-full">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

@@ -19,7 +19,7 @@ function Layout() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-between h-screen text-center max-w-screen-sm mx-auto">
+    <div className="flex flex-col justify-between h-full text-center max-w-screen-sm mx-auto">
       <Outlet
         context={{
           musicRef,

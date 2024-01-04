@@ -24,8 +24,8 @@ module.exports = {
       sans: ["Nunito", "sans-serif"],
     },
     fontSize: {
-      big: "3rem",
-      medium: "1.5rem",
+      big: "2.5rem",
+      medium: "1.2rem",
       small: "1rem",
     },
     extend: {

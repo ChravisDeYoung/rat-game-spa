@@ -51,7 +51,7 @@ function HowToPage() {
                 setPointValue(1);
               }}
             >
-              Very Easy
+              very easy
             </button>
             <button
               className="bg-difficulty-easy py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
@@ -60,7 +60,7 @@ function HowToPage() {
                 setPointValue(2);
               }}
             >
-              Easy
+              easy
             </button>
             <button
               className="bg-difficulty-medium py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
@@ -69,7 +69,7 @@ function HowToPage() {
                 setPointValue(3);
               }}
             >
-              Medium
+              medium
             </button>
             <button
               className="bg-difficulty-hard py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
@@ -78,7 +78,7 @@ function HowToPage() {
                 setPointValue(4);
               }}
             >
-              Hard
+              hard
             </button>
             <button
               className="bg-difficulty-very-hard py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
@@ -87,7 +87,7 @@ function HowToPage() {
                 setPointValue(5);
               }}
             >
-              Very Hard
+              very hard
             </button>
           </div>
 
@@ -160,7 +160,7 @@ function HowToPage() {
 
             {/* Skip */}
             <button
-              className={`bg-pink max-w-xs hover:bg-pink-dark border-2 border-b-4 border-pink-dark rounded-2xl py-1 mt-2 w-2/3 text-center text-small ${
+              className={`bg-pink max-w-xs active:bg-pink-dark lg:hover:bg-pink-dark border-2 border-b-4 border-pink-dark rounded-2xl py-1 mt-2 w-2/3 text-center text-small ${
                 page === 2 || page === 3 || "opacity-40"
               }`}
               disabled
