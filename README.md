@@ -18,12 +18,6 @@ $(".table tr").each(function(x) {
 JSON.stringify(tests);
 ```
 
-## TODO
-
-- give different values to different tests
-  - Easy = 1, Hard = 3
-- show the score on the home screen after a game
-
 # Sound Track
 
 https://www.epidemicsound.com/track/nLjgqmqXtS/
