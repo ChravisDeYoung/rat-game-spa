@@ -9,6 +9,7 @@ export function CircleIconButton(props: {
   onClick?: () => void;
   invert?: boolean;
   className?: string;
+  dataCy?: string;
 }) {
   const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 
@@ -30,6 +31,7 @@ export function CircleIconButton(props: {
         to={props.redirectPath}
         className={`rounded-full h-14 w-14 border-4 flex items-center justify-center ${COLOR_CLASSES} ${props.className}`}
         onClick={handleButtonClick}
+        data-cy={props.dataCy}
       >
         <span className="text-[2rem] flex justify-center">
           <FontAwesomeIcon icon={props.faIcon} />

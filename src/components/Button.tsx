@@ -6,6 +6,7 @@ export function Button(props: {
   children: React.ReactNode;
   redirectPath?: string;
   onClick?: () => void;
+  dataCy?: string;
 }) {
   const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 
@@ -24,6 +25,7 @@ export function Button(props: {
         className={`py-2 w-2/3 my-2 text-medium border-2 border-b-4 active:border-b-2 rounded-2xl max-w-xs ${props.className}`}
         to={props.redirectPath}
         onClick={handleButtonClick}
+        data-cy={props.dataCy}
       >
         {props.children}
       </Link>
@@ -33,6 +35,7 @@ export function Button(props: {
       <button
         className={`py-2 w-2/3 my-2 text-medium border-2 border-b-4 active:border-b-2 rounded-2xl max-w-xs ${props.className}`}
         onClick={handleButtonClick}
+        data-cy={props.dataCy}
       >
         {props.children}
       </button>

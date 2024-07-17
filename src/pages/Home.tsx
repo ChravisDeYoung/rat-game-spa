@@ -15,6 +15,7 @@ export default function HomePage() {
           faIcon={faQuestion}
           redirectPath="/how-to"
           className="absolute right-3 top-3"
+          dataCy="how-to-link"
         />
         <img className="my-5 mx-auto w-3/4 max-w-xs" src={logo} />
         <h1 className="text-big font-bold">
@@ -35,19 +36,21 @@ export default function HomePage() {
         <Button
           redirectPath="/game"
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+          dataCy="game-link"
         >
           play
         </Button>
         <Button
           redirectPath="/settings"
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+          dataCy="settings-link"
         >
           settings
         </Button>
       </section>
 
       <section className="my-5">
-        <p className="font-bold text-big">{highscore}</p>
+        <p className="font-bold text-big" data-cy='highscore'>{highscore}</p>
         <p className="text-medium">highscore</p>
       </section>
     </>
