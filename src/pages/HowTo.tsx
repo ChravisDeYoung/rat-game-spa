@@ -8,8 +8,8 @@ import { RatBody } from "../components/RatBody";
 const instructions = [
   "each screen will present three cue words that are linked by a fourth word, which is the correct answer",
   "the ear color of the RAT represents the difficulty of that remote association test",
-  "if a question is too hard, you can skip it my clicking on the RAT's tail or by pressing the right arrow key on your computer",
-  "every time you answer a test correctly, you will get points and some time added to the clock the harder the test, the more points you get",
+  "if a question is too hard, you can skip it by clicking on the RAT's tail or by pressing the right arrow key on your keyboard",
+  "every time you answer a test correctly, you will get points and some time added to the clock - the harder the test, the more points you get",
 ];
 
 function HowToPage() {
@@ -48,49 +48,54 @@ function HowToPage() {
         <>
           <div className="w-full">
             <button
-              className="bg-difficulty-very-easy py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
+              className="bg-difficulty-very-easy my-[0.1rem] text-small w-2/3 max-w-sm mx-auto"
               onClick={() => {
                 setColor("bg-difficulty-very-easy");
                 setPointValue(1);
               }}
             >
-              very easy
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">very easy</span>
             </button>
+
             <button
-              className="bg-difficulty-easy py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
+              className="bg-difficulty-easy my-[0.1rem] text-small w-2/3 max-w-sm mx-auto"
               onClick={() => {
                 setColor("bg-difficulty-easy");
                 setPointValue(2);
               }}
             >
-              easy
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">easy</span>
             </button>
+
             <button
-              className="bg-difficulty-medium py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
+              className="bg-difficulty-medium my-[0.1rem] text-small w-2/3 max-w-sm mx-auto"
               onClick={() => {
                 setColor("bg-difficulty-medium");
                 setPointValue(3);
               }}
             >
-              medium
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">medium</span>
             </button>
+
             <button
-              className="bg-difficulty-hard py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
+              className="bg-difficulty-hard my-[0.1rem] text-small w-2/3 max-w-sm mx-auto"
               onClick={() => {
                 setColor("bg-difficulty-hard");
                 setPointValue(4);
               }}
+data-cy='difficulty-hard-btn'
             >
-              hard
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">hard</span>
             </button>
+
             <button
-              className="bg-difficulty-very-hard py-2 my-[0.1rem] text-small w-2/3 max-w-xs mx-auto"
+              className="bg-difficulty-very-hard my-[0.1rem] text-small w-2/3 max-w-sm mx-auto"
               onClick={() => {
                 setColor("bg-difficulty-very-hard");
                 setPointValue(5);
               }}
             >
-              very hard
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">very hard</span>
             </button>
           </div>
 
