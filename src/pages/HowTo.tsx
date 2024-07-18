@@ -28,12 +28,14 @@ function HowToPage() {
             faIcon={faX}
             redirectPath="/"
             className="absolute right-3 top-3"
-          />
-        ) : (
-          <CircleIconButton
+            dataCy="home-link"
+            />
+          ) : (
+            <CircleIconButton
             faIcon={faArrowRight}
             onClick={() => setPage(page + 1)}
             className="absolute right-3 top-3"
+            dataCy="next-link"
           />
         )}
 
@@ -83,7 +85,7 @@ function HowToPage() {
                 setColor("bg-difficulty-hard");
                 setPointValue(4);
               }}
-data-cy='difficulty-hard-btn'
+              data-cy='difficulty-hard-btn'
             >
               <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">hard</span>
             </button>
@@ -105,11 +107,13 @@ data-cy='difficulty-hard-btn'
               <div className="bg-gray rounded-tl-full rounded-tr-full rounded-bl-full h-24 w-24 inline-flex justify-center items-center">
                 <div
                   className={`h-12 w-12 rounded-tl-full rounded-tr-full rounded-bl-full mt-3 ml-1 ${color}`}
-                ></div>
+                  data-cy='left-ear'
+                  ></div>
               </div>
               <div className="bg-gray rounded-tl-full rounded-tr-full rounded-br-full h-24 w-24 inline-flex justify-center items-center">
                 <div
                   className={`h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1 ${color}`}
+                  data-cy='right-ear'
                 ></div>
               </div>
             </div>

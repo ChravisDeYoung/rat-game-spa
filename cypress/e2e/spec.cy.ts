@@ -1,28 +1,11 @@
-describe('Home Page', () => {
-  it('navigates to how-to page', () => {
-    cy.visit('/')
+import { theme } from '../../tailwind.config.cjs'
 
-    cy.getBySel("how-to-link").click()
+const hexToRgb = (hex) => {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : null;
+}
 
-    cy.url().should('include', '/how-to')
-  })
-
-  it('navigates to settings page', () => {
-    cy.visit('/')
-
-    cy.getBySel("settings-link").click()
-
-    cy.url().should('include', '/settings')
-  })
-
-  it('navigates to game page', () => {
-    cy.visit('/')
-
-    cy.getBySel("game-link").click()
-
-    cy.url().should('include', '/game')
-  })
-
+describe('Basic Workflows', () => {
   it('displays previous highscore', () => {
     cy.clearLocalStorage('highscore')
     cy.visit('/')
@@ -35,4 +18,36 @@ describe('Home Page', () => {
     
     cy.getBySel('highscore').should('have.text', '7')
   });
+
+  it('navigates through the how to workflow', () => {
+    cy.visit('/')
+    
+    cy.getBySel('how-to-link').click()
+    cy.url().should('include', '/how-to')
+
+    // page 1
+    cy.getBySel('home-link').should('not.exist')
+    cy.getBySel('next-link').should('exist').click()
+
+    // page 2
+    cy.getBySel('home-link').should('not.exist')
+    cy.getBySel('next-link').should('exist').click()
+    
+    // page 3`
+    cy.getBySel('home-link').should('not.exist')
+    cy.getBySel('next-link').should('exist').click()
+    
+    // page 4
+    cy.getBySel('left-ear').should('have.css', 'background-color').and('eq', hexToRgb(theme.colors['difficulty-very-easy']))
+    cy.getBySel('right-ear').should('have.css', 'background-color').and('eq', hexToRgb(theme.colors['difficulty-very-easy']))
+    
+    cy.getBySel('difficulty-hard-btn').click()
+    cy.getBySel('left-ear').should('have.css', 'background-color').and('eq', hexToRgb(theme.colors['difficulty-hard']))
+    cy.getBySel('right-ear').should('have.css', 'background-color').and('eq', hexToRgb(theme.colors['difficulty-hard']))
+
+    cy.getBySel('next-link').should('not.exist')
+    cy.getBySel('home-link').should('exist').click()
+
+    cy.url().should('not.include', '/how-to')
+  })
 })

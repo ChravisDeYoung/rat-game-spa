@@ -43,6 +43,7 @@ export function CircleIconButton(props: {
       <button
         onClick={handleButtonClick}
         className={`rounded-full h-14 w-14 border-4 flex items-center justify-center ${COLOR_CLASSES} ${props.className}`}
+        data-cy={props.dataCy}
       >
         <span className="text-[2rem] flex justify-center">
           <FontAwesomeIcon icon={props.faIcon} />
