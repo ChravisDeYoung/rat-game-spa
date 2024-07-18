@@ -36,6 +36,7 @@ export default function SettingsPage() {
           faIcon={faX}
           redirectPath="/"
           className="absolute right-3 top-3"
+          dataCy="home-link"
         />
         <h1 className="mt-20 font-bold text-big tracking-widest">settings</h1>
       </header>
@@ -75,6 +76,7 @@ export default function SettingsPage() {
         <Button
           onClick={() => setIsOpen(true)}
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+          dataCy="reset-btn"
         >
           reset scores
         </Button>
@@ -107,12 +109,13 @@ export default function SettingsPage() {
 
           <div className="my-10 text-yellow">
             <h2 className="font-bold mb-1 text-medium">current highscore</h2>
-            <span className="font-bold text-big">{highscore}</span>
+            <span className="font-bold text-big" data-cy="reset-highscore">{highscore}</span>
           </div>
 
           <Button
             className="bg-yellow active:bg-yellow-dark lg:hover:bg-yellow-dark mb-10 mx-auto"
             onClick={resetHighscore}
+            dataCy="confirm-reset-btn"
           >
             confirm
           </Button>

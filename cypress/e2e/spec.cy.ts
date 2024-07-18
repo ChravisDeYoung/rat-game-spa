@@ -6,26 +6,35 @@ const hexToRgb = (hex) => {
 }
 
 describe('Basic Workflows', () => {
-  it('displays previous highscore', () => {
-    cy.clearLocalStorage('highscore')
-    cy.visit('/')
-
-    cy.getBySel('highscore').should('have.text', '0')
-
+  it('displays and deletes highscore', () => {
     cy.visit('/', {
       onBeforeLoad: () => window.localStorage.setItem('highscore', '7')
     })
-    
+
     cy.getBySel('highscore').should('have.text', '7')
+
+    cy.getBySel('settings-link').click()
+
+    cy.url().should('include', '/settings')
+
+    cy.getBySel('reset-btn').click()
+
+    cy.getBySel('reset-highscore').should('have.text', '7')
+
+    cy.getBySel('confirm-reset-btn').click()
+    cy.getBySel('home-link').click()
+
+    cy.url().should('not.include', '/settings')
+    cy.getBySel('highscore').should('have.text', '0')
   });
 
   it('navigates through the how to workflow', () => {
     cy.visit('/')
     
     cy.getBySel('how-to-link').click()
-    cy.url().should('include', '/how-to')
-
+    
     // page 1
+    cy.url().should('include', '/how-to')
     cy.getBySel('home-link').should('not.exist')
     cy.getBySel('next-link').should('exist').click()
 
