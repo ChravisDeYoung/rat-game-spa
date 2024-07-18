@@ -109,7 +109,7 @@ data-cy='difficulty-hard-btn'
               </div>
               <div className="bg-gray rounded-tl-full rounded-tr-full rounded-br-full h-24 w-24 inline-flex justify-center items-center">
                 <div
-                  className={`h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1 bg-pink ${color}`}
+                  className={`h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1 ${color}`}
                 ></div>
               </div>
             </div>
