@@ -7,6 +7,7 @@ export function Button(props: {
   redirectPath?: string;
   onClick?: () => void;
   dataCy?: string;
+  disabled?: boolean;
 }) {
   const { soundEffectRef, soundEffectEnabled } = useSoundContext();
 

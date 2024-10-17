@@ -4,9 +4,17 @@ import logo from "../assets/rat-logo.png";
 import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const [highscore] = useLocalStorage("highscore", 0);
+  // const [highscore] = useLocalStorage("highscore", 0);
+  const [highscore, setHighscore] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:5104/highscore")
+    .then(response => response.json())
+    .then(data => setHighscore(data))
+  }, [])
 
   return (
     <>
@@ -34,9 +42,9 @@ export default function HomePage() {
 
       <section className="flex flex-col items-center">
         <Button
-          redirectPath="/game"
+          redirectPath="/difficulty"
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
-          dataCy="game-link"
+          dataCy="difficulty-link"
         >
           play
         </Button>
