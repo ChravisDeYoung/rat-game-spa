@@ -1,6 +1,13 @@
-# rat-game-spa
+# Rat Game
 
 Remote Association Test Game
+
+## Instructions 
+
+1. Download project locally
+2. From two separate terminals, run: 
+- `cd /rat-game-spa && npm run dev`
+- `cd /rat-game-api && dotnet run`
 
 ## Tests Data
 
