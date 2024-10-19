@@ -50,8 +50,14 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGet("/highscore", (RatGameContext context) => context.Highscores.FirstOrDefault())
+app.MapGet("/{userId}/highscore", (int userId, RatGameContext context) => 
+    context.Highscores.FirstOrDefault(h => h.UserId == userId))
 .WithName("GetHighscore")
+.WithOpenApi();
+
+app.MapGet("/{userId}/highscores", (int userId, RatGameContext context) => 
+    context.Highscores.Where(h => h.UserId == userId))
+.WithName("GetHighscores")
 .WithOpenApi();
 
 app.Run();

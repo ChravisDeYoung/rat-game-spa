@@ -4,7 +4,7 @@ import RatDisplay from "../components/RatDisplay";
 import Timer from "../components/Timer";
 import { DIFFICULTY_MAP } from "../data/constants";
 import jsonData from "../data/tests.json";
-import { Difficulty } from "../types/Difficulty";
+import { TestDifficulty } from "../types/TestDifficulty";
 import { RAT } from "../types/Rat";
 
 function GamePage() {
@@ -12,12 +12,12 @@ function GamePage() {
 
   const tests = useRef<Array<RAT>>(
     jsonData
-      .filter((obj) => Difficulty.hasOwnProperty(obj.difficulty))
+      .filter((obj) => TestDifficulty.hasOwnProperty(obj.difficulty))
       .map((obj) => {
         return {
           items: obj.items,
           solution: obj.solution,
-          difficulty: Difficulty[obj.difficulty as keyof typeof Difficulty],
+          difficulty: TestDifficulty[obj.difficulty as keyof typeof TestDifficulty],
         };
       })
   );

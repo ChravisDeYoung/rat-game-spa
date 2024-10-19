@@ -9,10 +9,11 @@ import { Highscore } from "../types/Highscore";
 
 export default function HomePage() {
   // const [highscore] = useLocalStorage("highscore", 0);
-  const [highscore, setHighscore] = useState(0);
+  const [highscore, setHighscore] = useState<number>(0);
 
+  const userId = 1;
   useEffect(() => {
-    fetch("http://localhost:5104/highscore")
+    fetch(`http://localhost:5104/${userId}/highscore`)
       .then(response => response.json())
       .then((data: Highscore) => setHighscore(data.score))
   }, [])
