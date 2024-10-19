@@ -5,6 +5,7 @@ import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
+import { Highscore } from "../types/Highscore";
 
 export default function HomePage() {
   // const [highscore] = useLocalStorage("highscore", 0);
@@ -12,8 +13,8 @@ export default function HomePage() {
 
   useEffect(() => {
     fetch("http://localhost:5104/highscore")
-    .then(response => response.json())
-    .then(data => setHighscore(data))
+      .then(response => response.json())
+      .then((data: Highscore) => setHighscore(data.score))
   }, [])
 
   return (
