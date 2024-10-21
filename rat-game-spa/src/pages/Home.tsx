@@ -15,7 +15,7 @@ export default function HomePage() {
   useEffect(() => {
     fetch(`http://localhost:5104/${userId}/highscore`)
       .then(response => response.json())
-      .then((data: Highscore) => setHighscore(data.score))
+      .then((data: Highscore) => setHighscore(data?.score ?? 0))
   }, [])
 
   return (

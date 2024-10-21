@@ -26,3 +26,8 @@ public enum Difficulty
     Medium,
     Hard
 }
+
+public record HighscoreRequest(
+    int Score,
+    Difficulty Difficulty
+);

@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using RatGameApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +60,37 @@ app.MapGet("/{userId}/highscore", (int userId, RatGameContext context) =>
 app.MapGet("/{userId}/highscores", (int userId, RatGameContext context) => 
     context.Highscores.Where(h => h.UserId == userId))
 .WithName("GetHighscores")
+.WithOpenApi();
+
+app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGameContext context) => 
+{
+    var existingHighscore = context.Highscores
+        .FirstOrDefault(h => h.UserId == userId && h.Difficulty == request.Difficulty);
+
+    // update 
+    if (existingHighscore != null)
+    {
+        existingHighscore.Score = request.Score;
+        context.Highscores.Update(existingHighscore);
+    }
+    // insert 
+    else 
+    {
+        var newHighscore = new Highscore
+        {
+            UserId = userId,
+            Score = request.Score,
+            Difficulty = request.Difficulty,
+        };
+
+        context.Highscores.Add(newHighscore);
+    }
+
+    context.SaveChanges();
+
+    return Results.Ok();
+})
+.WithName("UpsertHighscore")
 .WithOpenApi();
 
 app.Run();

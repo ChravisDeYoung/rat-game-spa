@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import logo from "../assets/rat-logo.png";
 import { Button } from "../components/Button";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { GameDifficulty } from "../types/GameDifficulty";
 
 export default function GameOverPage() {
   const { state } = useLocation();
@@ -11,10 +12,23 @@ export default function GameOverPage() {
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
   const [newHighscore, setNewHighscore] = useState<boolean>(false);
 
+  const userId = 1;
+
   useEffect(() => {
     if (score > highscore) {
-      setHighscore(score);
+      // setHighscore(score);
       setNewHighscore(true);
+
+      // push the highscore to the backend 
+      fetch(`http://localhost:5104/${userId}/highscore`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ difficulty: GameDifficulty.Easy, score: score })
+        }
+      )
+      .catch(error => console.error('error updating highscore:', error))
     }
   }, []);
 
