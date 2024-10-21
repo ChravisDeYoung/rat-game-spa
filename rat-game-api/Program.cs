@@ -93,6 +93,17 @@ app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGame
 .WithName("UpsertHighscore")
 .WithOpenApi();
 
+app.MapDelete("/{userId}/highscores", (int userId, RatGameContext context) => 
+{
+    var allHighscores = context.Highscores.Where(h => h.UserId == userId);
+    context.Highscores.RemoveRange(allHighscores);
+    context.SaveChanges();
+
+    return Results.Ok();
+})
+.WithName("DeleteHighscores")
+.WithOpenApi();
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
