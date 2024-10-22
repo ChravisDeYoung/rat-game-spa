@@ -8,8 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Highscore } from "../types/Highscore";
 import { GameDifficulty } from "../types/GameDifficulty";
+import { useNavigate } from "react-router-dom";
 
 export default function DifficultyPage() {
+  const navigate = useNavigate();
+  
   // const [highscore] = useLocalStorage("highscore", 0);
   const [highscores, setHighscores] = useState<Highscore[]>([]);
 
@@ -19,6 +22,9 @@ export default function DifficultyPage() {
       .then(response => response.json())
       .then((data: Highscore[]) => setHighscores(data))
   }, [])
+
+  const handleDifficultySelect = (difficulty: GameDifficulty) => 
+    navigate('/game', { state: { difficulty: difficulty }})
 
   const easyHighscore = highscores.find(h => h.difficulty === GameDifficulty.Easy)?.score ?? 0;
   const mediumHighscore = highscores.find(h => h.difficulty === GameDifficulty.Medium)?.score ?? 0;
@@ -50,7 +56,7 @@ export default function DifficultyPage() {
 
       <section className="flex flex-col items-center">
         <Button
-          redirectPath="/game?difficulty=easy"
+          onClick={() => handleDifficultySelect(GameDifficulty.Easy)}
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           <span className="w-3/4 inline-block">easy</span>
@@ -59,7 +65,7 @@ export default function DifficultyPage() {
           </span>
         </Button>
         <Button
-          redirectPath="/game?difficulty=medium"
+          onClick={() => handleDifficultySelect(GameDifficulty.Medium)}
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           <span className="w-3/4 inline-block">medium</span>
@@ -68,7 +74,7 @@ export default function DifficultyPage() {
           </span>
           </Button>
         <Button
-          redirectPath="/game?difficulty=hard"
+          onClick={() => handleDifficultySelect(GameDifficulty.Hard)}
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           <span className="w-3/4 inline-block">hard</span>

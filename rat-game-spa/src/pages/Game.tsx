@@ -1,13 +1,16 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RatDisplay from "../components/RatDisplay";
 import Timer from "../components/Timer";
 import { DIFFICULTY_MAP } from "../data/constants";
 import jsonData from "../data/tests.json";
 import { TestDifficulty } from "../types/TestDifficulty";
 import { RAT } from "../types/Rat";
+import { GameDifficulty } from "../types/GameDifficulty";
 
 function GamePage() {
+  const { state } = useLocation();
+  const { difficulty } = state;
   const navigate = useNavigate();
 
   const tests = useRef<Array<RAT>>(
@@ -20,6 +23,11 @@ function GamePage() {
           difficulty: TestDifficulty[obj.difficulty as keyof typeof TestDifficulty],
         };
       })
+      .filter((test) => (difficulty == GameDifficulty.Easy 
+          && (test.difficulty == TestDifficulty["Very Easy"] || test.difficulty == TestDifficulty.Easy))
+        || (difficulty == GameDifficulty.Medium 
+          && (test.difficulty == TestDifficulty.Medium || test.difficulty == TestDifficulty.Hard))
+        || (difficulty == GameDifficulty.Hard))
   );
 
   const [testIndex, setTestIndex] = useState(
@@ -59,7 +67,7 @@ function GamePage() {
         timeInSeconds={time}
         onTimerFinish={() =>
           navigate("/game-over", {
-            state: { score: score },
+            state: { score: score, difficulty: difficulty },
           })
         }
       />
