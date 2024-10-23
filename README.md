@@ -16,13 +16,18 @@ Retrieved from https://www.remote-associates-test.com/ using the following scrip
 ```
 let tests = [];
 $(".table tr").each(function(x) {
-    tests.push({
-        items: $(this).find('a').text().split(' / '),
-        solution: $(this).find('.solution').text(),
-        difficulty: $(this).find('.label').text()
-    });
+    const items = $(this).find('a').text().split(' / ');
+    const solution = $(this).find('.solution').text();
+    const difficulty = $(this).find('.label').text();
+
+    if (items.length === 3 && solution && difficulty) {  
+        tests.push({
+            items: $(this).find('a').text().split(' / '),
+            solution: $(this).find('.solution').text(),
+            difficulty: $(this).find('.label').text()
+        });
+    }
 });
-JSON.stringify(tests);
 ```
 
 # Sound Track

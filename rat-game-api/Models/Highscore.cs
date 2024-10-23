@@ -12,7 +12,7 @@ public class Highscore
     public int Score { get; set;}
 
     [Required]
-    public Difficulty Difficulty { get; set; }
+    public GameDifficulty Difficulty { get; set; }
 
     [Required, ForeignKey(nameof(User))]
     public int UserId { get; set; }
@@ -20,7 +20,7 @@ public class Highscore
     public User? User { get; set; }
 }
 
-public enum Difficulty
+public enum GameDifficulty
 {
     Easy = 1,
     Medium,
@@ -29,5 +29,5 @@ public enum Difficulty
 
 public record HighscoreRequest(
     int Score,
-    Difficulty Difficulty
+    GameDifficulty Difficulty
 );
