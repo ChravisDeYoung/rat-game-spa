@@ -1,4 +1,11 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
+using RatGameApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("RatGameDb");
+builder.Services.AddDbContext<RatGameContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddCors(options =>
 {
@@ -10,8 +17,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,7 +24,6 @@ var app = builder.Build();
 
 app.UseCors();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -48,8 +52,56 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGet("/highscore", () => 99)
+app.MapGet("/{userId}/highscore", (int userId, RatGameContext context) => 
+    context.Highscores.FirstOrDefault(h => h.UserId == userId))
 .WithName("GetHighscore")
+.WithOpenApi();
+
+app.MapGet("/{userId}/highscores", (int userId, RatGameContext context) => 
+    context.Highscores.Where(h => h.UserId == userId))
+.WithName("GetHighscores")
+.WithOpenApi();
+
+app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGameContext context) => 
+{
+    var existingHighscore = context.Highscores
+        .FirstOrDefault(h => h.UserId == userId && h.Difficulty == request.Difficulty);
+
+    // update 
+    if (existingHighscore != null)
+    {
+        existingHighscore.Score = request.Score;
+        context.Highscores.Update(existingHighscore);
+    }
+    // insert 
+    else 
+    {
+        var newHighscore = new Highscore
+        {
+            UserId = userId,
+            Score = request.Score,
+            Difficulty = request.Difficulty,
+        };
+
+        context.Highscores.Add(newHighscore);
+    }
+
+    context.SaveChanges();
+
+    return Results.Ok();
+})
+.WithName("UpsertHighscore")
+.WithOpenApi();
+
+app.MapDelete("/{userId}/highscores", (int userId, RatGameContext context) => 
+{
+    var allHighscores = context.Highscores.Where(h => h.UserId == userId);
+    context.Highscores.RemoveRange(allHighscores);
+    context.SaveChanges();
+
+    return Results.Ok();
+})
+.WithName("DeleteHighscores")
 .WithOpenApi();
 
 app.Run();

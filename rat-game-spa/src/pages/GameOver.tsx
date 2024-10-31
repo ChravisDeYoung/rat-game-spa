@@ -1,20 +1,35 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/rat-logo.png";
 import { Button } from "../components/Button";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { GameDifficulty } from "../types/GameDifficulty";
 
 export default function GameOverPage() {
+  const navigate = useNavigate();
   const { state } = useLocation();
-  const { score } = state;
+  const { score, difficulty } = state;
 
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
   const [newHighscore, setNewHighscore] = useState<boolean>(false);
 
+  const userId = 1;
+
   useEffect(() => {
     if (score > highscore) {
-      setHighscore(score);
+      // setHighscore(score);
       setNewHighscore(true);
+
+      // push the highscore to the backend 
+      fetch(`http://localhost:5104/${userId}/highscore`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ difficulty: GameDifficulty.Easy, score: score })
+        }
+      )
+      .catch(error => console.error('error updating highscore:', error))
     }
   }, []);
 
@@ -38,7 +53,7 @@ export default function GameOverPage() {
 
       <section className="flex flex-col items-center my-5">
         <Button
-          redirectPath="/game"
+          onClick={() => navigate('/game', { state: { difficulty: difficulty }})}
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           play again

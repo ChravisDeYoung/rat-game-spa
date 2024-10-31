@@ -1,4 +1,4 @@
-export enum Difficulty {
+export enum TestDifficulty {
   "Very Easy",
   Easy,
   Medium,
@@ -7,5 +7,5 @@ export enum Difficulty {
 }
 
 export type DifficultyMap = {
-  [key in Difficulty]: { color: string; score: number };
+  [key in TestDifficulty]: { color: string; score: number };
 };

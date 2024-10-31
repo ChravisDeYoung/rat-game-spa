@@ -1,19 +1,37 @@
 import { faMusic, faVolumeHigh, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
+import { Highscore } from "../types/Highscore";
 
 export default function SettingsPage() {
   const { musicRef, soundEffectEnabled, setSoundEffectEnabled } =
     useSoundContext();
   const [musicEnabled, setMusicEnabled] = useState(!musicRef.current.paused);
-  const [highscore, setHighscore] = useLocalStorage("highscore", 0);
+  // const [highscore, setHighscore] = useLocalStorage("highscore", 0);
+  const [highscore, setHighscore] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
 
+  const userId = 1;
+  useEffect(() => {
+    fetch(`http://localhost:5104/${userId}/highscore`)
+      .then(response => response.json())
+      .then((data: Highscore) => setHighscore(data?.score ?? 0))
+  }, [])
+
   const resetHighscore = () => {
+    const userId = 1;
+    fetch(`http://localhost:5104/${userId}/highscores`,
+    {
+      method: 'DELETE',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
+    });
+
     setHighscore(0);
     setIsOpen(false);
   };

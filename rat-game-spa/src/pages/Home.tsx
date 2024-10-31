@@ -5,15 +5,17 @@ import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
+import { Highscore } from "../types/Highscore";
 
 export default function HomePage() {
   // const [highscore] = useLocalStorage("highscore", 0);
-  const [highscore, setHighscore] = useState(0);
+  const [highscore, setHighscore] = useState<number>(0);
 
+  const userId = 1;
   useEffect(() => {
-    fetch("http://localhost:5104/highscore")
-    .then(response => response.json())
-    .then(data => setHighscore(data))
+    fetch(`http://localhost:5104/${userId}/highscore`)
+      .then(response => response.json())
+      .then((data: Highscore) => setHighscore(data?.score ?? 0))
   }, [])
 
   return (
