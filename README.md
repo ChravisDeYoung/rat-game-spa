@@ -16,6 +16,7 @@ Remote Association Test Game
 ### Format 
 
 - inside /rat-game-spa run `npx prettier . --write`
+- inside /rat-game-api run `dotnet format`
 
 ## Tests Data
 

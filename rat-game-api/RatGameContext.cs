@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RatGameApi.Models;
 
-public class RatGameContext : DbContext
+public class RatGameContext(DbContextOptions<RatGameContext> options) : DbContext(options)
 {
-    public RatGameContext(DbContextOptions<RatGameContext> options) : base(options) { }
-
     public DbSet<Highscore> Highscores { get; set; }
 
     public DbSet<User> Users { get; set; }

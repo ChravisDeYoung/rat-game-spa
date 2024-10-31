@@ -1,15 +1,14 @@
+namespace RatGameApi.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RatGameApi.Models;
-
-public class Highscore 
+public class Highscore
 {
     [Key]
     public int Id { get; set; }
 
     [Required]
-    public int Score { get; set;}
+    public int Score { get; set; }
 
     [Required]
     public GameDifficulty Difficulty { get; set; }

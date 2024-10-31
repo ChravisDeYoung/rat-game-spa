@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using RatGameApi.Models;
 
@@ -7,15 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("RatGameDb");
 builder.Services.AddDbContext<RatGameContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
+builder.Services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()
                .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
+               .AllowAnyHeader()));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -39,7 +32,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -52,17 +45,17 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGet("/{userId}/highscore", (int userId, RatGameContext context) => 
+app.MapGet("/{userId}/highscore", (int userId, RatGameContext context) =>
     context.Highscores.FirstOrDefault(h => h.UserId == userId))
 .WithName("GetHighscore")
 .WithOpenApi();
 
-app.MapGet("/{userId}/highscores", (int userId, RatGameContext context) => 
+app.MapGet("/{userId}/highscores", (int userId, RatGameContext context) =>
     context.Highscores.Where(h => h.UserId == userId))
 .WithName("GetHighscores")
 .WithOpenApi();
 
-app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGameContext context) => 
+app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGameContext context) =>
 {
     var existingHighscore = context.Highscores
         .FirstOrDefault(h => h.UserId == userId && h.Difficulty == request.Difficulty);
@@ -74,7 +67,7 @@ app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGame
         context.Highscores.Update(existingHighscore);
     }
     // insert 
-    else 
+    else
     {
         var newHighscore = new Highscore
         {
@@ -93,7 +86,7 @@ app.MapPut("/{userId}/highscore", (int userId, HighscoreRequest request, RatGame
 .WithName("UpsertHighscore")
 .WithOpenApi();
 
-app.MapDelete("/{userId}/highscores", (int userId, RatGameContext context) => 
+app.MapDelete("/{userId}/highscores", (int userId, RatGameContext context) =>
 {
     var allHighscores = context.Highscores.Where(h => h.UserId == userId);
     context.Highscores.RemoveRange(allHighscores);
@@ -106,7 +99,7 @@ app.MapDelete("/{userId}/highscores", (int userId, RatGameContext context) =>
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+internal sealed record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public int TemperatureF => 32 + (int)(this.TemperatureC / 0.5556);
 }

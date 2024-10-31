@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace RatGameApi.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class User
 {
