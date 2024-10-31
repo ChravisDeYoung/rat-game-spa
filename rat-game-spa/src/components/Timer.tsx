@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function Timer(props: { timeInSeconds: number; onTimerFinish: Function }) {
+function Timer(props: { timeInSeconds: number; onTimerFinish: () => void }) {
   const startTime = useRef<number>(convertToSeconds(Date.now()));
 
   const [timeLeft, setTimeLeft] = useState<number>(props.timeInSeconds);

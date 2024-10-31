@@ -10,7 +10,7 @@ export default function GameOverPage() {
   const { state } = useLocation();
   const { score, difficulty } = state;
 
-  const [highscore, setHighscore] = useLocalStorage("highscore", 0);
+  const [highscore] = useLocalStorage("highscore", 0);
   const [newHighscore, setNewHighscore] = useState<boolean>(false);
 
   const userId = 1;

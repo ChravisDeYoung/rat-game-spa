@@ -1,7 +1,7 @@
 import { TestDifficulty } from "./TestDifficulty";
 
-export type RAT = {
-  items: Array<string>;
+export interface RAT {
+  items: string[];
   solution: string;
   difficulty: TestDifficulty;
-};
+}

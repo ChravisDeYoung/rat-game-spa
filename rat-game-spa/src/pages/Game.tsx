@@ -13,9 +13,9 @@ function GamePage() {
   const { difficulty } = state;
   const navigate = useNavigate();
 
-  const tests = useRef<Array<RAT>>(
+  const tests = useRef<RAT[]>(
     jsonData
-      .filter((obj) => TestDifficulty.hasOwnProperty(obj.difficulty))
+      .filter((obj) => obj.difficulty in TestDifficulty)
       .map((obj) => {
         return {
           items: obj.items,
@@ -44,7 +44,7 @@ function GamePage() {
     changeTest(true);
   };
 
-  const changeTest = (remove: boolean = false) => {
+  const changeTest = (remove = false) => {
     if (remove) {
       tests.current.splice(testIndex, 1);
       setTestIndex(Math.floor(Math.random() * tests.current.length));

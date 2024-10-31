@@ -17,7 +17,7 @@ function HowToPage() {
   const [color, setColor] = useState<string>("bg-difficulty-very-easy");
   const [pointValue, setPointValue] = useState<number>(1);
 
-  const words = ["cottage", "swiss", "cake"];
+  // const words = ["cottage", "swiss", "cake"];
 
   return (
     <>

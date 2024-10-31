@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+// import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
 import { Highscore } from "../types/Highscore";
 

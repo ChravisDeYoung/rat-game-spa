@@ -3,7 +3,7 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/rat-logo.png";
 import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+// import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 import { Highscore } from "../types/Highscore";
 

@@ -6,6 +6,4 @@ export enum TestDifficulty {
   "Very Hard",
 }
 
-export type DifficultyMap = {
-  [key in TestDifficulty]: { color: string; score: number };
-};
+export type DifficultyMap = Record<TestDifficulty, { color: string; score: number }>;

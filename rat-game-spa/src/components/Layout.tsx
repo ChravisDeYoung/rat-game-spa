@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import soundEffect from "../assets/button-click.mp3";
 import musicSource from "../assets/soundtrack.mp3";
