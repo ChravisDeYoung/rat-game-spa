@@ -14,9 +14,9 @@ export default function HomePage() {
   const userId = 1;
   useEffect(() => {
     fetch(`http://localhost:5104/${userId}/highscore`)
-      .then(response => response.json())
-      .then((data: Highscore) => setHighscore(data?.score ?? 0))
-  }, [])
+      .then((response) => response.json())
+      .then((data: Highscore) => setHighscore(data?.score ?? 0));
+  }, []);
 
   return (
     <>
@@ -60,7 +60,9 @@ export default function HomePage() {
       </section>
 
       <section className="my-5">
-        <p className="font-bold text-big" data-cy='highscore'>{highscore}</p>
+        <p className="font-bold text-big" data-cy="highscore">
+          {highscore}
+        </p>
         <p className="text-medium">highscore</p>
       </section>
     </>

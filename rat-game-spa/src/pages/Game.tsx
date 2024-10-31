@@ -20,25 +20,32 @@ function GamePage() {
         return {
           items: obj.items,
           solution: obj.solution,
-          difficulty: TestDifficulty[obj.difficulty as keyof typeof TestDifficulty],
+          difficulty:
+            TestDifficulty[obj.difficulty as keyof typeof TestDifficulty],
         };
       })
-      .filter((test) => (difficulty == GameDifficulty.Easy 
-          && (test.difficulty == TestDifficulty["Very Easy"] || test.difficulty == TestDifficulty.Easy))
-        || (difficulty == GameDifficulty.Medium 
-          && (test.difficulty == TestDifficulty.Medium || test.difficulty == TestDifficulty.Hard))
-        || (difficulty == GameDifficulty.Hard))
+      .filter(
+        (test) =>
+          (difficulty == GameDifficulty.Easy &&
+            (test.difficulty == TestDifficulty["Very Easy"] ||
+              test.difficulty == TestDifficulty.Easy)) ||
+          (difficulty == GameDifficulty.Medium &&
+            (test.difficulty == TestDifficulty.Medium ||
+              test.difficulty == TestDifficulty.Hard)) ||
+          difficulty == GameDifficulty.Hard,
+      ),
   );
 
   const [testIndex, setTestIndex] = useState(
-    Math.floor(Math.random() * tests.current.length)
+    Math.floor(Math.random() * tests.current.length),
   );
   const [score, setScore] = useState<number>(0);
   const [time, setTime] = useState<number>(15);
 
   const updateDisplay = () => {
     setScore(
-      (prev) => prev + DIFFICULTY_MAP[tests.current[testIndex].difficulty].score
+      (prev) =>
+        prev + DIFFICULTY_MAP[tests.current[testIndex].difficulty].score,
     );
     setTime(time + 5);
     changeTest(true);
@@ -50,7 +57,7 @@ function GamePage() {
       setTestIndex(Math.floor(Math.random() * tests.current.length));
     } else {
       let randomIndex: number = Math.floor(
-        Math.random() * tests.current.length
+        Math.random() * tests.current.length,
       );
       while (randomIndex === testIndex && tests.current.length > 1) {
         randomIndex = Math.floor(Math.random() * tests.current.length);

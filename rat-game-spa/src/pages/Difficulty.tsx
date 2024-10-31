@@ -12,32 +12,35 @@ import { useNavigate } from "react-router-dom";
 
 export default function DifficultyPage() {
   const navigate = useNavigate();
-  
+
   // const [highscore] = useLocalStorage("highscore", 0);
   const [highscores, setHighscores] = useState<Highscore[]>([]);
 
   const userId = 1;
   useEffect(() => {
     fetch(`http://localhost:5104/${userId}/highscores`)
-      .then(response => response.json())
-      .then((data: Highscore[]) => setHighscores(data))
-  }, [])
+      .then((response) => response.json())
+      .then((data: Highscore[]) => setHighscores(data));
+  }, []);
 
-  const handleDifficultySelect = (difficulty: GameDifficulty) => 
-    navigate('/game', { state: { difficulty: difficulty }})
+  const handleDifficultySelect = (difficulty: GameDifficulty) =>
+    navigate("/game", { state: { difficulty: difficulty } });
 
-  const easyHighscore = highscores.find(h => h.difficulty === GameDifficulty.Easy)?.score ?? 0;
-  const mediumHighscore = highscores.find(h => h.difficulty === GameDifficulty.Medium)?.score ?? 0;
-  const hardHighscore = highscores.find(h => h.difficulty === GameDifficulty.Hard)?.score ?? 0;
-  
+  const easyHighscore =
+    highscores.find((h) => h.difficulty === GameDifficulty.Easy)?.score ?? 0;
+  const mediumHighscore =
+    highscores.find((h) => h.difficulty === GameDifficulty.Medium)?.score ?? 0;
+  const hardHighscore =
+    highscores.find((h) => h.difficulty === GameDifficulty.Hard)?.score ?? 0;
+
   return (
     <>
       <header>
-      <CircleIconButton
-        faIcon={faX}
-        redirectPath="/"
-        className="absolute right-3 top-3"
-        dataCy="home-link"
+        <CircleIconButton
+          faIcon={faX}
+          redirectPath="/"
+          className="absolute right-3 top-3"
+          dataCy="home-link"
         />
         <img className="my-5 mx-auto w-3/4 max-w-xs" src={logo} />
         <h1 className="text-big font-bold">
@@ -60,9 +63,7 @@ export default function DifficultyPage() {
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           <span className="w-3/4 inline-block">easy</span>
-          <span className="w-1/4 inline-block border-l-2">
-            {easyHighscore}
-          </span>
+          <span className="w-1/4 inline-block border-l-2">{easyHighscore}</span>
         </Button>
         <Button
           onClick={() => handleDifficultySelect(GameDifficulty.Medium)}
@@ -70,23 +71,29 @@ export default function DifficultyPage() {
         >
           <span className="w-3/4 inline-block">medium</span>
           <span className="w-1/4 inline-block border-l-2">
-            {easyHighscore < 25 ? <FontAwesomeIcon icon={faLock} /> : mediumHighscore}
+            {easyHighscore < 25 ? (
+              <FontAwesomeIcon icon={faLock} />
+            ) : (
+              mediumHighscore
+            )}
           </span>
-          </Button>
+        </Button>
         <Button
           onClick={() => handleDifficultySelect(GameDifficulty.Hard)}
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           <span className="w-3/4 inline-block">hard</span>
           <span className="w-1/4 inline-block border-l-2">
-            {easyHighscore < 50 && mediumHighscore < 50 ? <FontAwesomeIcon icon={faLock} /> : hardHighscore}
+            {easyHighscore < 50 && mediumHighscore < 50 ? (
+              <FontAwesomeIcon icon={faLock} />
+            ) : (
+              hardHighscore
+            )}
           </span>
-          </Button>
+        </Button>
       </section>
 
-      <section className="my-5">
-        {" "}
-      </section>
+      <section className="my-5"> </section>
     </>
   );
 }

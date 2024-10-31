@@ -18,15 +18,14 @@ export default function SettingsPage() {
   const userId = 1;
   useEffect(() => {
     fetch(`http://localhost:5104/${userId}/highscore`)
-      .then(response => response.json())
-      .then((data: Highscore) => setHighscore(data?.score ?? 0))
-  }, [])
+      .then((response) => response.json())
+      .then((data: Highscore) => setHighscore(data?.score ?? 0));
+  }, []);
 
   const resetHighscore = () => {
     const userId = 1;
-    fetch(`http://localhost:5104/${userId}/highscores`,
-    {
-      method: 'DELETE',
+    fetch(`http://localhost:5104/${userId}/highscores`, {
+      method: "DELETE",
       // headers: {
       //   'Content-Type': 'application/json',
       // },
@@ -127,7 +126,9 @@ export default function SettingsPage() {
 
           <div className="my-10 text-yellow">
             <h2 className="font-bold mb-1 text-medium">current highscore</h2>
-            <span className="font-bold text-big" data-cy="reset-highscore">{highscore}</span>
+            <span className="font-bold text-big" data-cy="reset-highscore">
+              {highscore}
+            </span>
           </div>
 
           <Button

@@ -20,16 +20,14 @@ export default function GameOverPage() {
       // setHighscore(score);
       setNewHighscore(true);
 
-      // push the highscore to the backend 
+      // push the highscore to the backend
       fetch(`http://localhost:5104/${userId}/highscore`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ difficulty: GameDifficulty.Easy, score: score })
-        }
-      )
-      .catch(error => console.error('error updating highscore:', error))
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ difficulty: GameDifficulty.Easy, score: score }),
+      }).catch((error) => console.error("error updating highscore:", error));
     }
   }, []);
 
@@ -53,7 +51,9 @@ export default function GameOverPage() {
 
       <section className="flex flex-col items-center my-5">
         <Button
-          onClick={() => navigate('/game', { state: { difficulty: difficulty }})}
+          onClick={() =>
+            navigate("/game", { state: { difficulty: difficulty } })
+          }
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
         >
           play again

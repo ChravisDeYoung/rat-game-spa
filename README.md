@@ -9,6 +9,14 @@ Remote Association Test Game
 - `cd /rat-game-spa && npm run dev`
 - `cd /rat-game-api && dotnet run`
 
+### Lint
+
+- inside /rat-game-spa run `npx eslint .`
+
+### Format 
+
+- inside /rat-game-spa run `npx prettier . --write`
+
 ## Tests Data
 
 Retrieved from https://www.remote-associates-test.com/ using the following script:

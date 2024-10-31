@@ -29,9 +29,9 @@ function HowToPage() {
             redirectPath="/"
             className="absolute right-3 top-3"
             dataCy="home-link"
-            />
-          ) : (
-            <CircleIconButton
+          />
+        ) : (
+          <CircleIconButton
             faIcon={faArrowRight}
             onClick={() => setPage(page + 1)}
             className="absolute right-3 top-3"
@@ -56,7 +56,9 @@ function HowToPage() {
                 setPointValue(1);
               }}
             >
-              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">very easy</span>
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">
+                very easy
+              </span>
             </button>
 
             <button
@@ -66,7 +68,9 @@ function HowToPage() {
                 setPointValue(2);
               }}
             >
-              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">easy</span>
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">
+                easy
+              </span>
             </button>
 
             <button
@@ -76,7 +80,9 @@ function HowToPage() {
                 setPointValue(3);
               }}
             >
-              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">medium</span>
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">
+                medium
+              </span>
             </button>
 
             <button
@@ -85,9 +91,11 @@ function HowToPage() {
                 setColor("bg-difficulty-hard");
                 setPointValue(4);
               }}
-              data-cy='difficulty-hard-btn'
+              data-cy="difficulty-hard-btn"
             >
-              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">hard</span>
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">
+                hard
+              </span>
             </button>
 
             <button
@@ -97,7 +105,9 @@ function HowToPage() {
                 setPointValue(5);
               }}
             >
-              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">very hard</span>
+              <span className="bg-black h-full block m-auto py-2 w-1/2 text-yellow">
+                very hard
+              </span>
             </button>
           </div>
 
@@ -107,13 +117,13 @@ function HowToPage() {
               <div className="bg-gray rounded-tl-full rounded-tr-full rounded-bl-full h-24 w-24 inline-flex justify-center items-center">
                 <div
                   className={`h-12 w-12 rounded-tl-full rounded-tr-full rounded-bl-full mt-3 ml-1 ${color}`}
-                  data-cy='left-ear'
-                  ></div>
+                  data-cy="left-ear"
+                ></div>
               </div>
               <div className="bg-gray rounded-tl-full rounded-tr-full rounded-br-full h-24 w-24 inline-flex justify-center items-center">
                 <div
                   className={`h-12 w-12 rounded-tl-full rounded-tr-full rounded-br-full mt-3 mr-1 ${color}`}
-                  data-cy='right-ear'
+                  data-cy="right-ear"
                 ></div>
               </div>
             </div>

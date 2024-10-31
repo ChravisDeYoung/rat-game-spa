@@ -15,9 +15,9 @@ function Timer(props: { timeInSeconds: number; onTimerFinish: () => void }) {
           setTimeLeft(
             startTime.current +
               props.timeInSeconds -
-              convertToSeconds(Date.now())
+              convertToSeconds(Date.now()),
           ),
-        1000
+        1000,
       );
     } else {
       props.onTimerFinish();
