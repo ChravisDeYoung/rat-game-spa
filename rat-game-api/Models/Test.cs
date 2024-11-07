@@ -22,11 +22,14 @@ public class Test
     public TestDifficulty Difficulty { get; set; }
 }
 
-public enum TestDifficulty
-{
-    VeryEasy = 1,
-    Easy,
-    Medium,
-    Hard,
-    VeryHard
-}
+public record TestRequest(
+    string Solution
+);
+
+public record TestResponse(
+    int Id,
+    string Item1,
+    string Item2,
+    string Item3,
+    TestDifficulty Difficulty
+);

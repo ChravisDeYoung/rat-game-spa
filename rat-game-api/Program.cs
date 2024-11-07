@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RatGameApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication();
 
 var connectionString = builder.Configuration.GetConnectionString("RatGameDb");
 builder.Services.AddDbContext<RatGameContext>(options => options.UseSqlServer(connectionString));
@@ -95,6 +96,39 @@ app.MapDelete("/{userId}/highscores", (int userId, RatGameContext context) =>
     return Results.Ok();
 })
 .WithName("DeleteHighscores")
+.WithOpenApi();
+
+app.MapGet("/tests/{difficulty}", (GameDifficulty difficulty, RatGameContext context) =>
+{
+    var tests = difficulty switch
+    {
+        GameDifficulty.Easy => context.Tests.Where(t => t.Difficulty == TestDifficulty.VeryEasy || t.Difficulty == TestDifficulty.Easy),
+        GameDifficulty.Medium => context.Tests.Where(t => t.Difficulty == TestDifficulty.Medium || t.Difficulty == TestDifficulty.Hard),
+        GameDifficulty.Hard => context.Tests,
+        _ => context.Tests
+    };
+
+    return Results.Ok(tests.Select(t => new TestResponse(t.Id, t.Item1, t.Item2, t.Item3, t.Difficulty)));
+})
+.WithName("GetTests")
+.WithOpenApi();
+
+app.MapPost("/{testId}/solution", (int testId, TestRequest request, RatGameContext context) =>
+{
+    var test = context.Tests.FirstOrDefault(t => t.Id == testId);
+
+    if (test != null
+        && !string.IsNullOrEmpty(request.Solution)
+        && test.Solution.Trim().Equals(request.Solution.Trim(), StringComparison.OrdinalIgnoreCase))
+    {
+        return Results.Ok(true);
+    }
+    else
+    {
+        return Results.Ok(false);
+    }
+})
+.WithName("CheckSolution")
 .WithOpenApi();
 
 app.Run();

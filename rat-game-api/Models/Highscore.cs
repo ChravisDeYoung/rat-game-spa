@@ -19,13 +19,6 @@ public class Highscore
     public User? User { get; set; }
 }
 
-public enum GameDifficulty
-{
-    Easy = 1,
-    Medium,
-    Hard
-}
-
 public record HighscoreRequest(
     int Score,
     GameDifficulty Difficulty
