@@ -1,0 +1,6 @@
+POST {{host}}/api/tests/{{testId}}/check-solution
+Content-Type: application/json
+
+{
+  "Solution": "chEEse "
+}

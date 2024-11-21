@@ -1,4 +1,6 @@
-namespace RatGameApi.Models;
+
+namespace RatGameApi.Domain;
+
 using System.ComponentModel.DataAnnotations;
 
 public class Test
@@ -21,15 +23,3 @@ public class Test
     [Required]
     public TestDifficulty Difficulty { get; set; }
 }
-
-public record TestRequest(
-    string Solution
-);
-
-public record TestResponse(
-    int Id,
-    string Item1,
-    string Item2,
-    string Item3,
-    TestDifficulty Difficulty
-);

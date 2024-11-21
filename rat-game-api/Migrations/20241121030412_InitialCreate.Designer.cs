@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace rat_game_api.Migrations
 {
     [DbContext(typeof(RatGameContext))]
-    [Migration("20241023023306_SeedTests")]
-    partial class SeedTests
+    [Migration("20241121030412_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace rat_game_api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("RatGameApi.Models.Highscore", b =>
+            modelBuilder.Entity("RatGameApi.Domain.HighScore", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,17 +37,26 @@ namespace rat_game_api.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.ToTable("HighScores");
 
-                    b.ToTable("Highscores");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Difficulty = 1,
+                            Score = 52
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Difficulty = 2,
+                            Score = 29
+                        });
                 });
 
-            modelBuilder.Entity("RatGameApi.Models.Test", b =>
+            modelBuilder.Entity("RatGameApi.Domain.Test", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2518,39 +2527,6 @@ namespace rat_game_api.Migrations
                             Item3 = "car",
                             Solution = "stop"
                         });
-                });
-
-            modelBuilder.Entity("RatGameApi.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("RatGameApi.Models.Highscore", b =>
-                {
-                    b.HasOne("RatGameApi.Models.User", "User")
-                        .WithMany("Highscores")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("RatGameApi.Models.User", b =>
-                {
-                    b.Navigation("Highscores");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,4 @@
-namespace RatGameApi.Models;
+namespace RatGameApi.Domain;
 
 public enum TestDifficulty
 {

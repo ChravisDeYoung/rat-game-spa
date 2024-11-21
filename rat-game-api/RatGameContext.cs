@@ -1,17 +1,20 @@
 using Microsoft.EntityFrameworkCore;
-using RatGameApi.Models;
+using RatGameApi.Domain;
 
 public class RatGameContext(DbContextOptions<RatGameContext> options) : DbContext(options)
 {
-    public DbSet<Highscore> Highscores { get; set; }
-
-    public DbSet<User> Users { get; set; }
+    public DbSet<HighScore> HighScores { get; set; }
 
     public DbSet<Test> Tests { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<HighScore>().HasData(
+            new HighScore { Id = 1, Score = 52, Difficulty = GameDifficulty.Easy },
+            new HighScore { Id = 2, Score = 29, Difficulty = GameDifficulty.Medium }
+        );
 
         modelBuilder.Entity<Test>().HasData(
             new Test { Id = 1, Item1 = "cottage", Item2 = "swiss", Item3 = "cake", Solution = "cheese", Difficulty = TestDifficulty.VeryEasy },

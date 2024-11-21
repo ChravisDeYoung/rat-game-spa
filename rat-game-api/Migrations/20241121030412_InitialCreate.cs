@@ -3,16 +3,28 @@
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace rat_game_api.Migrations;
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
 /// <inheritdoc />
-public partial class SeedTests : Migration
+public partial class InitialCreate : Migration
 {
-    private static readonly string[] columns = ["Id", "Difficulty", "Item1", "Item2", "Item3", "Solution"];
+    private static readonly string[] columns = new[] { "Id", "Difficulty", "Score" };
 
     /// <inheritdoc />
     protected override void Up(MigrationBuilder migrationBuilder)
     {
+        migrationBuilder.CreateTable(
+            name: "HighScores",
+            columns: table => new
+            {
+                Id = table.Column<int>(type: "int", nullable: false)
+                    .Annotation("SqlServer:Identity", "1, 1"),
+                Score = table.Column<int>(type: "int", nullable: false),
+                Difficulty = table.Column<int>(type: "int", nullable: false)
+            },
+            constraints: table => table.PrimaryKey("PK_HighScores", x => x.Id));
+
         migrationBuilder.CreateTable(
             name: "Tests",
             columns: table => new
@@ -28,8 +40,17 @@ public partial class SeedTests : Migration
             constraints: table => table.PrimaryKey("PK_Tests", x => x.Id));
 
         migrationBuilder.InsertData(
-            table: "Tests",
+            table: "HighScores",
             columns: columns,
+            values: new object[,]
+            {
+                { 1, 1, 52 },
+                { 2, 2, 29 }
+            });
+
+        migrationBuilder.InsertData(
+            table: "Tests",
+            columns: new[] { "Id", "Difficulty", "Item1", "Item2", "Item3", "Solution" },
             values: new object[,]
             {
                 { 1, 1, "cottage", "swiss", "cake", "cheese" },
@@ -307,6 +328,12 @@ public partial class SeedTests : Migration
     }
 
     /// <inheritdoc />
-    protected override void Down(MigrationBuilder migrationBuilder) => migrationBuilder.DropTable(
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropTable(
+            name: "HighScores");
+
+        migrationBuilder.DropTable(
             name: "Tests");
+    }
 }

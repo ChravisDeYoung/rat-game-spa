@@ -1,0 +1,18 @@
+{
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "testId": "1",
+            "gameDifficulty": "Medium"
+        },
+        "development": {
+            "host": "http://localhost:5104",
+            "token": "ey.."
+        },
+        "staging": {
+            "token": "ey.."
+        },
+        "production": {
+            "token": "ey.."
+        },
+    }
+}
