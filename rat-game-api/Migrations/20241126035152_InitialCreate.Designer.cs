@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace rat_game_api.Migrations
 {
     [DbContext(typeof(RatGameContext))]
-    [Migration("20241121030412_InitialCreate")]
+    [Migration("20241126035152_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -37,6 +37,9 @@ namespace rat_game_api.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("HighScores");
@@ -46,13 +49,15 @@ namespace rat_game_api.Migrations
                         {
                             Id = 1,
                             Difficulty = 1,
-                            Score = 52
+                            Score = 52,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 2,
                             Difficulty = 2,
-                            Score = 29
+                            Score = 29,
+                            UserId = 1
                         });
                 });
 
@@ -2527,6 +2532,23 @@ namespace rat_game_api.Migrations
                             Item3 = "car",
                             Solution = "stop"
                         });
+                });
+
+            modelBuilder.Entity("RatGameApi.Domain.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

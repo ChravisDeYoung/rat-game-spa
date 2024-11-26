@@ -7,13 +7,15 @@ public class RatGameContext(DbContextOptions<RatGameContext> options) : DbContex
 
     public DbSet<Test> Tests { get; set; }
 
+    public DbSet<User> Users { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<HighScore>().HasData(
-            new HighScore { Id = 1, Score = 52, Difficulty = GameDifficulty.Easy },
-            new HighScore { Id = 2, Score = 29, Difficulty = GameDifficulty.Medium }
+            new HighScore { Id = 1, Score = 52, Difficulty = GameDifficulty.Easy, UserId = 1 },
+            new HighScore { Id = 2, Score = 29, Difficulty = GameDifficulty.Medium, UserId = 1 }
         );
 
         modelBuilder.Entity<Test>().HasData(
