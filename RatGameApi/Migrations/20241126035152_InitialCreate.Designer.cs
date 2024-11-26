@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace rat_game_api.Migrations
+namespace RatGameApi.Migrations
 {
     [DbContext(typeof(RatGameContext))]
     [Migration("20241126035152_InitialCreate")]

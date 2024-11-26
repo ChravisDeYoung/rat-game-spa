@@ -7,7 +7,7 @@ Remote Association Test Game
 1. Download project locally
 2. From two separate terminals, run: 
 - `cd /rat-game-spa && npm run dev`
-- `cd /rat-game-api && dotnet run`
+- `cd /RatGameApi && dotnet run`
 
 ### Lint
 
@@ -16,7 +16,7 @@ Remote Association Test Game
 ### Format 
 
 - inside /rat-game-spa run `npx prettier . --write`
-- inside /rat-game-api run `dotnet format`
+- inside /RatGameApi run `dotnet format`
 
 ## Tests Data
 

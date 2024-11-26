@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace rat_game_api.Migrations
+namespace RatGameApi.Migrations
 {
     [DbContext(typeof(RatGameContext))]
     partial class RatGameContextModelSnapshot : ModelSnapshot

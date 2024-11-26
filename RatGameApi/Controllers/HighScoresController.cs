@@ -26,7 +26,7 @@ public class HighScoresController(HighScoresService highScoresService) : Control
     {
         var highScore = request.ToDomain();
 
-        this._highScoresService.AddUpdateHighScore(highScore);
+        await this._highScoresService.AddUpdateHighScore(highScore);
 
         return this.Ok(highScore);
     }

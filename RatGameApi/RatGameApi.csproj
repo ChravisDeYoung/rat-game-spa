@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>rat_game_api</RootNamespace>
+    <RootNamespace>RatGameApi</RootNamespace>
     <UserSecretsId>b43df6b4-2512-421b-95c9-d02806e63d99</UserSecretsId>
   </PropertyGroup>
 
