@@ -1,0 +1,19 @@
+### update
+POST {{host}}/api/highscores
+Content-Type: application/json
+
+{
+  "Score": "99",
+  "Difficulty": 1,
+  "UserId": 1
+}
+
+### insert 
+POST {{host}}/api/highscores
+Content-Type: application/json
+
+{
+  "Score": "3",
+  "Difficulty": 3,
+  "UserId": 1
+}

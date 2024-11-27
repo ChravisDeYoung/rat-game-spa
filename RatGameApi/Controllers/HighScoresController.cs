@@ -11,10 +11,10 @@ public class HighScoresController(HighScoresService highScoresService) : Control
     private readonly HighScoresService _highScoresService = highScoresService;
 
 
-    [HttpGet("{userId}")]
+    [HttpGet("{userId?}")]
     public async Task<IActionResult> Get(int? userId)
     {
-        var highScores = await this._highScoresService.GetHighScores(userId);
+        var highScores = await this._highScoresService.GetHighScoresAsync(userId);
 
         return highScores is null || highScores.Count == 0
             ? this.NotFound("No high scores found")
@@ -26,9 +26,17 @@ public class HighScoresController(HighScoresService highScoresService) : Control
     {
         var highScore = request.ToDomain();
 
-        await this._highScoresService.AddUpdateHighScore(highScore);
+        await this._highScoresService.AddUpdateHighScoreAsync(highScore);
 
         return this.Ok(highScore);
+    }
+
+    [HttpDelete("{userId}")]
+    public async Task<IActionResult> Delete(int userId)
+    {
+        await this._highScoresService.DeleteHighScoresAsync(userId);
+
+        return this.NoContent();
     }
 }
 

@@ -13,7 +13,7 @@ public class TestsController(TestsService testsService) : ControllerBase
     [HttpGet("{gameDifficulty}")]
     public async Task<IActionResult> Get(GameDifficulty gameDifficulty)
     {
-        var tests = await this._testsService.GetTestsByDifficulty(gameDifficulty);
+        var tests = await this._testsService.GetTestsByDifficultyAsync(gameDifficulty);
 
         return tests is null || tests.Count == 0
             ? this.NotFound("No tests not found")

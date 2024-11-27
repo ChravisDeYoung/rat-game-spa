@@ -13,6 +13,10 @@ public class RatGameContext(DbContextOptions<RatGameContext> options) : DbContex
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<User>().HasData(
+            new User { Id = 1, Username = "travis" }
+        );
+
         modelBuilder.Entity<HighScore>().HasData(
             new HighScore { Id = 1, Score = 52, Difficulty = GameDifficulty.Easy, UserId = 1 },
             new HighScore { Id = 2, Score = 29, Difficulty = GameDifficulty.Medium, UserId = 1 }

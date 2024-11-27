@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 public partial class InitialCreate : Migration
 {
     private static readonly string[] columns = ["Id", "Difficulty", "Score", "UserId"];
-    private static readonly string[] columnsArray = new[] { "Id", "Difficulty", "Item1", "Item2", "Item3", "Solution" };
+    private static readonly string[] columnsArray = ["Id", "Difficulty", "Item1", "Item2", "Item3", "Solution"];
 
     /// <inheritdoc />
     protected override void Up(MigrationBuilder migrationBuilder)

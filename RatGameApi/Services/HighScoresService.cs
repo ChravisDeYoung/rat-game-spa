@@ -1,47 +1,33 @@
 namespace RatGameApi.Services;
 
-using Microsoft.EntityFrameworkCore;
 using RatGameApi.Domain;
+using RatGameApi.Repositories;
 
-public class HighScoresService(RatGameContext context)
+public class HighScoresService(HighScoresRepository highScoresRepository)
 {
-    private readonly RatGameContext _context = context;
+    private readonly HighScoresRepository _highScoresRepository = highScoresRepository;
 
-    public async Task<List<HighScore>> GetHighScores(int? userId)
+    public async Task<List<HighScore>> GetHighScoresAsync(int? userId) => await this._highScoresRepository.GetAllAsync(userId);
+
+    public async Task AddUpdateHighScoreAsync(HighScore highScore)
     {
-        List<HighScore> highScores;
-
-        if (userId is null)
-        {
-            highScores = await this._context.HighScores.ToListAsync();
-        }
-        else
-        {
-            highScores = await this._context.HighScores.Where(hs => hs.UserId == userId).ToListAsync();
-        }
-
-        return highScores;
-    }
-
-    /// <summary>
-    /// Adds or updates a high score depending on if it already exists
-    /// </summary>
-    /// <param name="highScore"></param>
-    /// <returns></returns>
-    public async Task<bool> AddUpdateHighScore(HighScore highScore)
-    {
-        var existingHighscore = await this._context.HighScores.FirstOrDefaultAsync(hs => hs.Difficulty == highScore.Difficulty && hs.UserId == highScore.UserId);
+        var existingHighscore = await this._highScoresRepository.GetAsync(highScore.UserId, highScore.Difficulty);
 
         if (existingHighscore is null)
         {
-            await this._context.AddAsync(highScore);
+            await this._highScoresRepository.AddAsync(highScore);
         }
         else
         {
             existingHighscore.Score = highScore.Score;
-            this._context.Update(existingHighscore);
+            await this._highScoresRepository.UpdateAsync(existingHighscore);
         }
+    }
 
-        return await this._context.SaveChangesAsync() > 0;
+    public async Task DeleteHighScoresAsync(int userId)
+    {
+        var highScores = await this._highScoresRepository.GetAllAsync(userId);
+
+        await this._highScoresRepository.DeleteAsync(highScores);
     }
 }

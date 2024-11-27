@@ -1,28 +1,44 @@
 namespace RatGameApi.Services;
 
-using Microsoft.EntityFrameworkCore;
 using RatGameApi.Domain;
+using RatGameApi.Repositories;
 
-public class TestsService(RatGameContext context)
+public class TestsService(TestsRepository testsRepository)
 {
-    private readonly RatGameContext _context = context;
+    private readonly TestsRepository _testsRepository = testsRepository;
 
-    public async Task<List<Test>> GetTestsByDifficulty(GameDifficulty difficulty)
+    public async Task<List<Test>> GetTestsByDifficultyAsync(GameDifficulty difficulty)
     {
-        var tests = difficulty switch
+        var testDifficulties = new List<TestDifficulty>();
+
+        switch (difficulty)
         {
-            GameDifficulty.Easy => await this._context.Tests.Where(t => t.Difficulty == TestDifficulty.VeryEasy || t.Difficulty == TestDifficulty.Easy).ToListAsync(),
-            GameDifficulty.Medium => await this._context.Tests.Where(t => t.Difficulty == TestDifficulty.Medium || t.Difficulty == TestDifficulty.Hard).ToListAsync(),
-            GameDifficulty.Hard => await this._context.Tests.ToListAsync(),
-            _ => await context.Tests.ToListAsync()
+            case GameDifficulty.Easy:
+                testDifficulties.Add(TestDifficulty.VeryEasy);
+                testDifficulties.Add(TestDifficulty.Easy);
+                break;
+            case GameDifficulty.Medium:
+                testDifficulties.Add(TestDifficulty.Medium);
+                testDifficulties.Add(TestDifficulty.Hard);
+                break;
+            case GameDifficulty.Hard:
+                testDifficulties.Add(TestDifficulty.VeryHard);
+                break;
+            default:
+                testDifficulties.Add(TestDifficulty.VeryEasy);
+                testDifficulties.Add(TestDifficulty.Easy);
+                testDifficulties.Add(TestDifficulty.Medium);
+                testDifficulties.Add(TestDifficulty.Hard);
+                testDifficulties.Add(TestDifficulty.VeryHard);
+                break;
         };
 
-        return tests;
+        return await this._testsRepository.GetTestsByDifficultyAsync(testDifficulties);
     }
 
     public async Task<bool> CheckTestSolution(int testId, string guessedSolution)
     {
-        var test = await this._context.Tests.FindAsync(testId);
+        var test = await this._testsRepository.GetAsync(testId);
 
         if (test is null)
         {

@@ -1,6 +1,15 @@
+### success
 POST {{host}}/api/tests/{{testId}}/check-solution
 Content-Type: application/json
 
 {
   "Solution": "chEEse "
+}
+
+### fail
+POST {{host}}/api/tests/{{testId}}/check-solution
+Content-Type: application/json
+
+{
+  "Solution": "chEEse 1"
 }
