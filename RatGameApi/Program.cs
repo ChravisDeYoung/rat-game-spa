@@ -14,8 +14,20 @@ builder.Services.AddDbContext<RatGameContext>(options => options.UseSqlServer(co
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 app.MapControllers();
+
+app.UseCors();
 
 app.Run();

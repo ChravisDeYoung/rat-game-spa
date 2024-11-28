@@ -6,6 +6,7 @@ import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
 import { Highscore } from "../types/Highscore";
+import { fetchHighscores, removeHighscores } from "../api/highscores";
 
 export default function SettingsPage() {
   const { musicRef, soundEffectEnabled, setSoundEffectEnabled } =
@@ -17,22 +18,19 @@ export default function SettingsPage() {
 
   const userId = 1;
   useEffect(() => {
-    fetch(`http://localhost:5104/${userId}/highscore`)
-      .then((response) => response.json())
-      .then((data: Highscore) => setHighscore(data?.score ?? 0));
+    fetchHighscores(userId).then((data: Highscore[]) => {
+      const totalScore = data.reduce((sum, { score }) => sum + score, 0);
+      
+      setHighscore(totalScore);
+    });
   }, []);
 
   const resetHighscore = () => {
     const userId = 1;
-    fetch(`http://localhost:5104/${userId}/highscores`, {
-      method: "DELETE",
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
+    removeHighscores(userId).then(_ => {
+      setHighscore(0);
+      setIsOpen(false);
     });
-
-    setHighscore(0);
-    setIsOpen(false);
   };
 
   const toggleMusic = () => {

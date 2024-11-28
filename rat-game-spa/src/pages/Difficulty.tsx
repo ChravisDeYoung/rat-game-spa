@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Highscore } from "../types/Highscore";
 import { GameDifficulty } from "../types/GameDifficulty";
 import { useNavigate } from "react-router-dom";
+import { fetchHighscores } from "../api/highscores";
 
 export default function DifficultyPage() {
   const navigate = useNavigate();
@@ -18,9 +19,9 @@ export default function DifficultyPage() {
 
   const userId = 1;
   useEffect(() => {
-    fetch(`http://localhost:5104/${userId}/highscores`)
-      .then((response) => response.json())
-      .then((data: Highscore[]) => setHighscores(data));
+    fetchHighscores(userId).then((data: Highscore[]) => {
+      setHighscores(data);
+    });
   }, []);
 
   const handleDifficultySelect = (difficulty: GameDifficulty) =>
