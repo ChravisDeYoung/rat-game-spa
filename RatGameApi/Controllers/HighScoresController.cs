@@ -5,7 +5,7 @@ using RatGameApi.Domain;
 using RatGameApi.Services;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/high-scores")]
 public class HighScoresController(HighScoresService highScoresService) : ControllerBase
 {
     private readonly HighScoresService _highScoresService = highScoresService;

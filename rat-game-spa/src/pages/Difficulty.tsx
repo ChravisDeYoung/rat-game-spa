@@ -6,21 +6,21 @@ import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Highscore } from "../types/Highscore";
+import { HighScore } from "../types/HighScore";
 import { GameDifficulty } from "../types/GameDifficulty";
 import { useNavigate } from "react-router-dom";
-import { fetchHighscores } from "../api/highscores";
+import { fetchHighScores } from "../api/high-scores";
 
 export default function DifficultyPage() {
   const navigate = useNavigate();
 
-  // const [highscore] = useLocalStorage("highscore", 0);
-  const [highscores, setHighscores] = useState<Highscore[]>([]);
+  // const [highScore] = useLocalStorage("highScore", 0);
+  const [highScores, setHighScores] = useState<HighScore[]>([]);
 
   const userId = 1;
   useEffect(() => {
-    fetchHighscores(userId).then((data: Highscore[]) => {
-      setHighscores(data);
+    fetchHighScores(userId).then((data: HighScore[]) => {
+      setHighScores(data);
     });
   }, []);
 
@@ -28,11 +28,11 @@ export default function DifficultyPage() {
     navigate("/game", { state: { difficulty: difficulty } });
 
   const easyHighscore =
-    highscores.find((h) => h.difficulty === GameDifficulty.Easy)?.score ?? 0;
+    highScores.find((h) => h.difficulty === GameDifficulty.Easy)?.score ?? 0;
   const mediumHighscore =
-    highscores.find((h) => h.difficulty === GameDifficulty.Medium)?.score ?? 0;
+    highScores.find((h) => h.difficulty === GameDifficulty.Medium)?.score ?? 0;
   const hardHighscore =
-    highscores.find((h) => h.difficulty === GameDifficulty.Hard)?.score ?? 0;
+    highScores.find((h) => h.difficulty === GameDifficulty.Hard)?.score ?? 0;
 
   return (
     <>

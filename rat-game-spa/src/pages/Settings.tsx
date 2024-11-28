@@ -5,30 +5,30 @@ import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
-import { Highscore } from "../types/Highscore";
-import { fetchHighscores, removeHighscores } from "../api/highscores";
+import { HighScore } from "../types/HighScore";
+import { fetchHighScores, removeHighScores } from "../api/high-scores";
 
 export default function SettingsPage() {
   const { musicRef, soundEffectEnabled, setSoundEffectEnabled } =
     useSoundContext();
   const [musicEnabled, setMusicEnabled] = useState(!musicRef.current.paused);
-  // const [highscore, setHighscore] = useLocalStorage("highscore", 0);
-  const [highscore, setHighscore] = useState<number>(0);
+  // const [highScore, setHighscore] = useLocalStorage("highScore", 0);
+  const [highScore, setHighScore] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const userId = 1;
   useEffect(() => {
-    fetchHighscores(userId).then((data: Highscore[]) => {
+    fetchHighScores(userId).then((data: HighScore[]) => {
       const totalScore = data.reduce((sum, { score }) => sum + score, 0);
-      
-      setHighscore(totalScore);
+
+      setHighScore(totalScore);
     });
   }, []);
 
   const resetHighscore = () => {
     const userId = 1;
-    removeHighscores(userId).then(_ => {
-      setHighscore(0);
+    removeHighScores(userId).then(() => {
+      setHighScore(0);
       setIsOpen(false);
     });
   };
@@ -123,9 +123,9 @@ export default function SettingsPage() {
           </div>
 
           <div className="my-10 text-yellow">
-            <h2 className="font-bold mb-1 text-medium">current highscore</h2>
-            <span className="font-bold text-big" data-cy="reset-highscore">
-              {highscore}
+            <h2 className="font-bold mb-1 text-medium">current high score</h2>
+            <span className="font-bold text-big" data-cy="reset-high-score">
+              {highScore}
             </span>
           </div>
 

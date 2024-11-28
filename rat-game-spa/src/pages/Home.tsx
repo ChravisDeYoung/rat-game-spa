@@ -5,20 +5,20 @@ import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
-import { Highscore } from "../types/Highscore";
-import { fetchHighscores } from "../api/highscores";
+import { fetchHighScores } from "../api/high-scores";
+import { HighScore } from "../types/HighScore";
 
 export default function HomePage() {
-  // const [highscore] = useLocalStorage("highscore", 0);
-  const [highscore, setHighscore] = useState<number>(0);
+  // const [highScore] = useLocalStorage("highScore", 0);
+  const [highScore, setHighScore] = useState<number>(0);
 
   const userId = 1;
   useEffect(() => {
-    fetchHighscores(userId).then((data: Highscore[]) => {
+    fetchHighScores(userId).then((data: HighScore[]) => {
       const totalScore = data.reduce((sum, { score }) => sum + score, 0);
-      
-      setHighscore(totalScore);
-    })
+
+      setHighScore(totalScore);
+    });
   }, []);
 
   return (
@@ -63,10 +63,10 @@ export default function HomePage() {
       </section>
 
       <section className="my-5">
-        <p className="font-bold text-big" data-cy="highscore">
-          {highscore}
+        <p className="font-bold text-big" data-cy="highScore">
+          {highScore}
         </p>
-        <p className="text-medium">highscore</p>
+        <p className="text-medium">highScore</p>
       </section>
     </>
   );

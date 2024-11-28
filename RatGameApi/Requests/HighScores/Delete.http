@@ -1,2 +1,2 @@
-DELETE {{host}}/api/highscores/{{userId}}
+DELETE {{host}}/api/high-scores/{{userId}}
 

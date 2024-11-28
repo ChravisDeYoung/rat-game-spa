@@ -1,6 +1,6 @@
 import { GameDifficulty } from "./GameDifficulty";
 
-export interface Highscore {
+export interface HighScore {
   score: number;
   difficulty: GameDifficulty;
   userId: number;

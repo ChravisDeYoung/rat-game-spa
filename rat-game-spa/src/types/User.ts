@@ -1,7 +1,7 @@
-import { Highscore } from "./Highscore";
+import { HighScore } from "./HighScore";
 
 export interface User {
   id: number;
   username: string;
-  highscores?: Highscore[];
+  highScores?: HighScore[];
 }

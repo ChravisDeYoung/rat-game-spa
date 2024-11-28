@@ -1,5 +1,5 @@
 ### update
-POST {{host}}/api/highscores
+POST {{host}}/api/high-scores
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### insert 
-POST {{host}}/api/highscores
+POST {{host}}/api/high-scores
 Content-Type: application/json
 
 {

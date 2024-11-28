@@ -10,24 +10,24 @@ export default function GameOverPage() {
   const { state } = useLocation();
   const { score, difficulty } = state;
 
-  const [highscore] = useLocalStorage("highscore", 0);
-  const [newHighscore, setNewHighscore] = useState<boolean>(false);
+  const [highScore] = useLocalStorage("highScore", 0);
+  const [newHighScore, setNewHighScore] = useState<boolean>(false);
 
   const userId = 1;
 
   useEffect(() => {
-    if (score > highscore) {
+    if (score > highScore) {
       // setHighscore(score);
-      setNewHighscore(true);
+      setNewHighScore(true);
 
-      // push the highscore to the backend
-      fetch(`http://localhost:5104/${userId}/highscore`, {
+      // push the high score to the backend
+      fetch(`http://localhost:5104/${userId}/high-score`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ difficulty: GameDifficulty.Easy, score: score }),
-      }).catch((error) => console.error("error updating highscore:", error));
+      }).catch((error) => console.error("error updating high score:", error));
     }
   }, []);
 
@@ -41,10 +41,10 @@ export default function GameOverPage() {
       <div className="my-10">
         <h2
           className={`font-bold mb-1 text-medium ${
-            newHighscore && "animate-bounce"
+            newHighScore && "animate-bounce"
           }`}
         >
-          {newHighscore ? "highscore" : "score"}
+          {newHighScore ? "highScore" : "score"}
         </h2>
         <span className="font-bold text-big">{score}</span>
       </div>

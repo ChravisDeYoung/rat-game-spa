@@ -30,10 +30,10 @@ public class HighScoresRepository(RatGameContext context)
         return highScores;
     }
 
-    public async Task AddAsync(HighScore highScore) 
+    public async Task AddAsync(HighScore highScore)
     {
         await this._context.AddAsync(highScore);
-        
+
         await this._context.SaveChangesAsync();
     }
 

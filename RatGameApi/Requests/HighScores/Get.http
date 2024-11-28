@@ -1,5 +1,5 @@
 ### for user
-GET {{host}}/api/highscores/{{userId}}
+GET {{host}}/api/high-scores/{{userId}}
 
 ### for everyone 
-GET {{host}}/api/highscores/
+GET {{host}}/api/high-scores/
