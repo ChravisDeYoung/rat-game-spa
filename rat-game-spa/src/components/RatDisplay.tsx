@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { DIFFICULTY_MAP } from "../data/constants";
-import { RAT } from "../types/Rat";
+import { Test } from "../types/Test";
 import { Button } from "./Button";
 import { RatEars } from "./RatEars";
 import { RatBody } from "./RatBody";
+import { checkTestSolution } from "../api/tests";
 
 function RatDisplay(props: {
-  rat: RAT;
+  test: Test;
   disabled?: boolean;
   onCorrectAnswer: () => void;
   onSkipTest: () => void;
@@ -15,12 +16,14 @@ function RatDisplay(props: {
   const [incorrect, setIncorrect] = useState(false);
 
   const checkAnswer = () => {
-    if (answer.toLowerCase().trim() === props.rat.solution) {
-      props.onCorrectAnswer();
-      setAnswer("");
-    } else {
-      setIncorrect(true);
-    }
+    checkTestSolution(props.test.id, answer).then((isCorrect) => {
+      if (isCorrect) {
+        props.onCorrectAnswer();
+        setAnswer("");
+      } else {
+        setIncorrect(true);
+      }
+    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -38,9 +41,9 @@ function RatDisplay(props: {
 
   return (
     <div className="flex flex-col items-center">
-      <RatEars color={DIFFICULTY_MAP[props.rat.difficulty].color} />
+      <RatEars color={DIFFICULTY_MAP[props.test.difficulty].color} />
 
-      <RatBody words={props.rat.items} />
+      <RatBody words={[props.test.item1, props.test.item2, props.test.item3]} />
 
       {/* Answer */}
       <div className="w-2/3 mt-5 max-w-xs">

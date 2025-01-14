@@ -4,6 +4,7 @@ import logo from "../assets/rat-logo.png";
 import { Button } from "../components/Button";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { GameDifficulty } from "../types/GameDifficulty";
+import { updateHighScore } from "../api/high-scores";
 
 export default function GameOverPage() {
   const navigate = useNavigate();
@@ -18,16 +19,9 @@ export default function GameOverPage() {
   useEffect(() => {
     if (score > highScore) {
       // setHighscore(score);
-      setNewHighScore(true);
-
-      // push the high score to the backend
-      fetch(`http://localhost:5104/${userId}/high-score`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ difficulty: GameDifficulty.Easy, score: score }),
-      }).catch((error) => console.error("error updating high score:", error));
+      updateHighScore(score, difficulty, userId).then(() => {
+        setNewHighScore(true);
+      });
     }
   }, []);
 

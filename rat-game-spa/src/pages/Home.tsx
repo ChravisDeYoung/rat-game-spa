@@ -54,6 +54,13 @@ export default function HomePage() {
           play
         </Button>
         <Button
+          redirectPath="/leaderboard"
+          className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
+          dataCy="difficulty-link"
+        >
+          leaderboards
+        </Button>
+        <Button
           redirectPath="/settings"
           className="bg-gray active:bg-gray-dark lg:hover:bg-gray-dark"
           dataCy="settings-link"

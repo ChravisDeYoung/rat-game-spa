@@ -12,12 +12,188 @@ const instructions = [
   "every time you answer a test correctly, you will get points and some time added to the clock - the harder the test, the more points you get",
 ];
 
+interface SqlInfo {
+  css: string;
+  subreportOrder: number;
+  eqName: string;
+  eqNum: string;
+  location: string;
+  eqTagNum: string;
+  datakey: string;
+}
+
 function HowToPage() {
   const [page, setPage] = useState<number>(0);
   const [color, setColor] = useState<string>("bg-difficulty-very-easy");
   const [pointValue, setPointValue] = useState<number>(1);
 
   // const words = ["cottage", "swiss", "cake"];
+
+  const generateSql = (names: string[], info: SqlInfo): string => {
+    var query: string = "";
+    var sortOrder: number = 1;
+
+    for (let question = 1; question <= names.length; question++) {
+      query += `INSERT [dbo].[DataField] ([Name], [Description], [DataType], [InputType], [MinValue], [MaxValue], [isVisible], [SetPoint], [Units], [Source], [Required], [CssClass], [Subreport], [SortOrder], [DataTag], [ReferenceID], [DropDownText], [DropDownValue], [FormulaType], [dayOfWeek], [columnNumber], [decimalFraction], [subReportOrder], [ReportColumn], [ReportRow], [showTrend], [MinSpecValue], [MaxSpecValue], [Instructions], [reportingLevel], [subsection], [DataKey], [ReferenceKey], [ReferenceAddHours], [holdLastValue], [columnLimit], [ManagementField], [ShiftRounds], [FCARequired], [EnableFCA], [URL], [URLTitle], [AspenExportTag]) VALUES (N'${names[question - 1]}', N'${names[question - 1]}', 2, 1101, 0.0000, 0.0000, 1, 0.0000, N'', N'', N'123456789', N'bldg-5-4th-floor-${info.css}-${question}', N'Operator Asset Care Bldg 5 4th Floor', ${sortOrder++}, N'', 0, N'', N'', 0, N'0', 0, 2, ${info.subreportOrder}, N'0', N'0', 0, 0.0000, 0.0000, N'', 0, N'${info.eqName};${info.eqNum};${info.location};${info.eqTagNum}', N'BLDG_5_4TH_FLOOR_${info.datakey}_${question}', N'', 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL)
+      INSERT [dbo].[DataField] ([Name], [Description], [DataType], [InputType], [MinValue], [MaxValue], [isVisible], [SetPoint], [Units], [Source], [Required], [CssClass], [Subreport], [SortOrder], [DataTag], [ReferenceID], [DropDownText], [DropDownValue], [FormulaType], [dayOfWeek], [columnNumber], [decimalFraction], [subReportOrder], [ReportColumn], [ReportRow], [showTrend], [MinSpecValue], [MaxSpecValue], [Instructions], [reportingLevel], [subsection], [DataKey], [ReferenceKey], [ReferenceAddHours], [holdLastValue], [columnLimit], [ManagementField], [ShiftRounds], [FCARequired], [EnableFCA], [URL], [URLTitle], [AspenExportTag]) VALUES (N'${names[question - 1]} Notes', N'${names[question - 1]} Notes', 4, 1101, 0.0000, 0.0000, 1, 0.0000, N'', N'', N'123456789', N'bldg-5-4th-floor-${info.css}-${question}-notes', N'Operator Asset Care Bldg 5 Basement and 4th Floor', ${sortOrder++}, N'', 0, N'', N'', 0, N'0', 0, 2, ${info.subreportOrder}, N'0', N'0', 0, 0.0000, 0.0000, N'', 0, N'${info.eqName};${info.eqNum};${info.location};${info.eqTagNum}', N'BLDG_5_4TH_FLOOR_${info.datakey}_${question}_NOTES', N'', 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL)`
+    }
+
+    return query;
+  }
+
+  let temp = "";
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "1-fiber-separation-dsm-screen", 
+      subreportOrder: 1, 
+      eqName: "#1 Fiber Separation DSM Screen", 
+      eqNum: "N005SC05002", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC05002", 
+      datakey: "1_FIBER_SEPARATION_DSM_SCREEN" });
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "2-fiber-separation-dsm-screen", 
+      subreportOrder: 2, 
+      eqName: "#2 Fiber Separation DSM Screen", 
+      eqNum: "N005SC05003", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC05003", 
+      datakey: "2_FIBER_SEPARATION_DSM_SCREEN" });
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "3-fiber-separation-dsm-screen", 
+      subreportOrder: 3, 
+      eqName: "#3 Fiber Separation DSM Screen", 
+      eqNum: "N005SC05004", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC05004", 
+      datakey: "3_FIBER_SEPARATION_DSM_SCREEN" });
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "4-fiber-separation-dsm-screen", 
+      subreportOrder: 4, 
+      eqName: "#4 Fiber Separation DSM Screen", 
+      eqNum: "N005SC05005", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC05005", 
+      datakey: "4_FIBER_SEPARATION_DSM_SCREEN" });
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "5-fiber-separation-dsm-screen", 
+      subreportOrder: 5, 
+      eqName: "#5 Fiber Separation DSM Screen", 
+      eqNum: "N005SC05010", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC05010", 
+      datakey: "5_FIBER_SEPARATION_DSM_SCREEN" });
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "6-fiber-separation-dsm-screen", 
+      subreportOrder: 6, 
+      eqName: "#6 Fiber Separation DSM Screen", 
+      eqNum: "N005SC05011", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC05011", 
+      datakey: "6_FIBER_SEPARATION_DSM_SCREEN" });
+  
+  temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "1-fiber-wash-dsm-screen", 
+      subreportOrder: 7, 
+      eqName: "#1 Fiber Wash DSM Screen", 
+      eqNum: "N005SC050", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC050", 
+      datakey: "1_FIBER_WASH_DSM_SCREEN" });
+
+    temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "2-fiber-wash-dsm-screen", 
+      subreportOrder: 8, 
+      eqName: "#2 Fiber Wash DSM Screen", 
+      eqNum: "N005SC050", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC050", 
+      datakey: "2_FIBER_WASH_DSM_SCREEN" });
+  
+    temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "3-fiber-wash-dsm-screen", 
+      subreportOrder: 9, 
+      eqName: "#3 Fiber Wash DSM Screen", 
+      eqNum: "N005SC050", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC050", 
+      datakey: "3_FIBER_WASH_DSM_SCREEN" });
+  
+    temp += generateSql([
+      "1. Ensure equipment is clean.",
+      "2. Check for damaged screen, gasket, or door.",
+      "3. Check for leaks on hoses and flanges.",
+      "4. Check for plugged nozzles.",
+    ], 
+    { 
+      css: "4-fiber-wash-dsm-screen", 
+      subreportOrder: 10, 
+      eqName: "#4 Fiber Wash DSM Screen", 
+      eqNum: "N005SC050", 
+      location: "Bld 5 4th Floor", 
+      eqTagNum: "5SC050", 
+      datakey: "4_FIBER_WASH_DSM_SCREEN" });
+  
+  console.log(temp);
 
   return (
     <>

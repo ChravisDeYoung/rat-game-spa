@@ -1,72 +1,61 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RatDisplay from "../components/RatDisplay";
 import Timer from "../components/Timer";
 import { DIFFICULTY_MAP } from "../data/constants";
 import jsonData from "../data/tests.json";
 import { TestDifficulty } from "../types/TestDifficulty";
-import { RAT } from "../types/Rat";
 import { GameDifficulty } from "../types/GameDifficulty";
+import { Test } from "../types/Test";
+import { fetchTests } from "../api/tests";
 
 function GamePage() {
   const { state } = useLocation();
-  const { difficulty } = state;
+  const { difficulty }: { difficulty: GameDifficulty } = state;
   const navigate = useNavigate();
 
-  const tests = useRef<RAT[]>(
-    jsonData
-      .filter((obj) => obj.difficulty in TestDifficulty)
-      .map((obj) => {
-        return {
-          items: obj.items,
-          solution: obj.solution,
-          difficulty:
-            TestDifficulty[obj.difficulty as keyof typeof TestDifficulty],
-        };
-      })
-      .filter(
-        (test) =>
-          (difficulty == GameDifficulty.Easy &&
-            (test.difficulty == TestDifficulty["Very Easy"] ||
-              test.difficulty == TestDifficulty.Easy)) ||
-          (difficulty == GameDifficulty.Medium &&
-            (test.difficulty == TestDifficulty.Medium ||
-              test.difficulty == TestDifficulty.Hard)) ||
-          difficulty == GameDifficulty.Hard,
-      ),
-  );
-
-  const [testIndex, setTestIndex] = useState(
-    Math.floor(Math.random() * tests.current.length),
-  );
+  const [testIndex, setTestIndex] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
   const [time, setTime] = useState<number>(15);
+  const [tests, setTests] = useState<Test[]>([]);
 
-  const updateDisplay = () => {
+  useEffect(() => {
+    fetchTests(difficulty).then((data) => {
+      setTests(data);
+      setTestIndex(Math.floor(Math.random() * tests.length));
+    });
+  }, []);
+
+  const updateDisplay = (): void => {
     setScore(
       (prev) =>
-        prev + DIFFICULTY_MAP[tests.current[testIndex].difficulty].score,
+        prev + DIFFICULTY_MAP[tests[testIndex].difficulty].score,
     );
+
     setTime(time + 5);
+
     changeTest(true);
   };
 
-  const changeTest = (remove = false) => {
-    if (remove) {
-      tests.current.splice(testIndex, 1);
-      setTestIndex(Math.floor(Math.random() * tests.current.length));
+  const changeTest = (removeTest: boolean): void => {
+    if (removeTest) {
+      tests.splice(testIndex, 1);
+
+      setTestIndex(Math.floor(Math.random() * tests.length));
     } else {
       let randomIndex: number = Math.floor(
-        Math.random() * tests.current.length,
+        Math.random() * tests.length,
       );
-      while (randomIndex === testIndex && tests.current.length > 1) {
-        randomIndex = Math.floor(Math.random() * tests.current.length);
+
+      while (randomIndex === testIndex && tests.length > 1) {
+        randomIndex = Math.floor(Math.random() * tests.length);
       }
+
       setTestIndex(randomIndex);
     }
   };
 
-  return tests.current.length > 0 ? (
+  return tests.length > 0 ? (
     <div>
       <h3 className="font-bold text-medium mt-5">{score}</h3>
 
@@ -80,9 +69,9 @@ function GamePage() {
       />
 
       <RatDisplay
-        rat={tests.current[testIndex]}
+        test={tests[testIndex]}
         onCorrectAnswer={updateDisplay}
-        onSkipTest={() => tests.current.length > 1 && changeTest()}
+        onSkipTest={() => tests.length > 1 && changeTest(false)}
       />
     </div>
   ) : (
