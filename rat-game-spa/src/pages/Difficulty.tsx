@@ -8,18 +8,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchHighScores } from "../api/high-scores";
-import { HighScore } from "../types/HighScore";
+import { HighScoreRename } from "../types/HighScoreRename";
 import { GameDifficulty } from "../types/GameDifficulty";
 
 export default function DifficultyPage() {
   const navigate = useNavigate();
 
   // const [highScore] = useLocalStorage("highScore", 0);
-  const [highScores, setHighScores] = useState<HighScore[]>([]);
+  const [highScores, setHighScores] = useState<HighScoreRename[]>([]);
 
   const userId = 1;
   useEffect(() => {
-    fetchHighScores(userId).then((data: HighScore[]) => {
+    fetchHighScores(userId).then((data: HighScoreRename[]) => {
       setHighScores(data);
     });
   }, []);

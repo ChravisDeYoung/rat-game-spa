@@ -1,11 +1,11 @@
 import { GameDifficulty } from "../types/GameDifficulty";
-import { HighScore } from "../types/HighScore";
+import { HighScoreRename } from "../types/HighScoreRename";
 
 interface HighScoresResponse {
-  highScores: HighScore[];
+  highScores: HighScoreRename[];
 }
 
-export const fetchHighScores = async (userId: number): Promise<HighScore[]> => {
+export const fetchHighScores = async (userId: number): Promise<HighScoreRename[]> => {
   const response = await fetch(
     `http://localhost:5104/api/high-scores/${userId}`,
   );
@@ -15,7 +15,7 @@ export const fetchHighScores = async (userId: number): Promise<HighScore[]> => {
   return data.highScores;
 };
 
-export const updateHighScore = async (score: number, difficulty: GameDifficulty, userId: number): Promise<HighScore> => {
+export const updateHighScore = async (score: number, difficulty: GameDifficulty, userId: number): Promise<HighScoreRename> => {
   const response = await fetch(
     'http://localhost:5104/api/high-scores', {
       method: "POST",
@@ -26,7 +26,7 @@ export const updateHighScore = async (score: number, difficulty: GameDifficulty,
     }
   );
 
-  const data: HighScore = await response.json();
+  const data: HighScoreRename = await response.json();
 
   return data;
 };

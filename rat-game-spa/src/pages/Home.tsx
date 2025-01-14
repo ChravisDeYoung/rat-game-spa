@@ -6,7 +6,7 @@ import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 import { fetchHighScores } from "../api/high-scores";
-import { HighScore } from "../types/HighScore";
+import { HighScoreRename } from "../types/HighScoreRename";
 
 export default function HomePage() {
   // const [highScore] = useLocalStorage("highScore", 0);
@@ -14,7 +14,7 @@ export default function HomePage() {
 
   const userId = 1;
   useEffect(() => {
-    fetchHighScores(userId).then((data: HighScore[]) => {
+    fetchHighScores(userId).then((data: HighScoreRename[]) => {
       const totalScore = data.reduce((sum, { score }) => sum + score, 0);
 
       setHighScore(totalScore);

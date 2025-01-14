@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
-import { HighScore } from "../types/HighScore";
+import { HighScoreRename } from "../types/HighScoreRename";
 import { fetchHighScores } from "../api/high-scores";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,7 +18,7 @@ export default function LeaderboardPage() {
 
   const userId = 1;
   useEffect(() => {
-    fetchHighScores(userId).then((data: HighScore[]) => {
+    fetchHighScores(userId).then((data: HighScoreRename[]) => {
       const totalScore = data.reduce((sum, { score }) => sum + score, 0);
 
       setHighScore(totalScore);

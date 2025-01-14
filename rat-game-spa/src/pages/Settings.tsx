@@ -5,7 +5,7 @@ import { Button } from "../components/Button";
 import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useSoundContext } from "../hooks/useSoundContext";
-import { HighScore } from "../types/HighScore";
+import { HighScoreRename } from "../types/HighScoreRename";
 import { fetchHighScores, removeHighScores } from "../api/high-scores";
 
 export default function SettingsPage() {
@@ -18,7 +18,7 @@ export default function SettingsPage() {
 
   const userId = 1;
   useEffect(() => {
-    fetchHighScores(userId).then((data: HighScore[]) => {
+    fetchHighScores(userId).then((data: HighScoreRename[]) => {
       const totalScore = data.reduce((sum, { score }) => sum + score, 0);
 
       setHighScore(totalScore);
