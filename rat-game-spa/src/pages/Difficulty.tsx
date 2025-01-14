@@ -6,10 +6,10 @@ import { CircleIconButton } from "../components/CircleIconButton";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { HighScore } from "../types/HighScore";
-import { GameDifficulty } from "../types/GameDifficulty";
 import { useNavigate } from "react-router-dom";
 import { fetchHighScores } from "../api/high-scores";
+import { HighScore } from "../types/HighScore";
+import { GameDifficulty } from "../types/GameDifficulty";
 
 export default function DifficultyPage() {
   const navigate = useNavigate();

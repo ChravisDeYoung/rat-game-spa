@@ -1,5 +1,4 @@
 import { GameDifficulty } from "../types/GameDifficulty";
-import { HighScore } from "../types/HighScore";
 import { Test } from "../types/Test";
 
 interface TestsResponse {
